@@ -47,7 +47,7 @@ This project was created to help beginners to learn how to code in Lua using Com
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE.md) file for details
 
 ## Disclaimer
 
