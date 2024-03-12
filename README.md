@@ -14,6 +14,12 @@ Blockly is a Google libraries that add visual programation for educational or be
 
 No installation is required. Just open the application in your browser and start coding.
 
+### For offline usage
+
+1. Download the repository
+2. Open the `index.html` file in your browser
+3. Start coding
+
 ## Usage
 
 1. Open the application in your browser
