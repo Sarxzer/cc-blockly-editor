@@ -1,0 +1,22 @@
+# To do
+
+- [ ] Finish the websocket implementation
+- [ ] Add colors constants and / or color picker
+- [ ] Add Rednet API
+- [ ] Add Redstone API
+- [X] Add Turtle API
+- [ ] Add peripheral methods
+- [ ] Add a way to import code from ComputerCraft:Tweaked
+- [ ] Add a way to save the code to a file
+- [ ] Add a way to load a file to the editor
+- [ ] Add a way to share the code with others
+- [ ] Add different themes
+- [ ] Add a way to change the language
+- [ ] Add a basic tutorial
+- [ ] Add a backpack to store the code
+- [ ] Add a way to import code from pastebin
+- [ ] Add a way to export code to pastebin
+- [ ] Add a way to import code from GitHub
+- [ ] Add a way to export code to GitHub
+- [ ] Add a settings menu
+- [ ] Add a support page
