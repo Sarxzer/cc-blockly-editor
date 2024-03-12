@@ -1,5 +1,6 @@
 # To do
 
+- [ ] Fix the istaller to create a desktop shortcut
 - [ ] Finish the websocket implementation
 - [ ] Add colors constants and / or color picker
 - [ ] Add Rednet API

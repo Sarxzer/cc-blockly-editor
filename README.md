@@ -16,9 +16,10 @@ No installation is required. Just open the application in your browser and start
 
 ### For offline usage
 
-1. Download the repository
-2. Open the `index.html` file in your browser
-3. Start coding
+1. Download the cc_tweaked_blockly-1.x.x.Setup.exe file from the [releases](github.com/Sarxzer/cc-tweaked_blockly/releases/latest)
+2. Run the installer (Windows only) (Linux and MacOS users can run the application using the source code)
+3. For some reason, the installer does not create a desktop shortcut. You can create one manually by right-clicking on the desktop and selecting "New" > "Shortcut". Then, paste the following path: `C:\Users\%USERNAME%\AppData\Local\cc-tweaked_blockly\cc-tweaked_blockly.exe`
+4. Open the application
 
 ## Usage
 
