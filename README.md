@@ -15,7 +15,13 @@ Blockly is a Google libraries that add visual programation for educational or be
 No installation is required. Just open the application in your browser and start coding.
 
 ### For offline usage
+#### Html file
+1. Download the `cc-tweaked_blockly-1.x.x.zip` file from the [releases](https://github.com/Sarxzer/cc-tweaked_blockly/releases/latest)
+2. Extract the files
+3. Open the `index.html` file in your browser
+4. Start coding
 
+#### Windows installer (DO NOT USE, IT IS NOT WORKING)
 1. Download the `cct_blockly_app-1.x.x.Setup.exe` file from the [releases](https://github.com/Sarxzer/cc-tweaked_blockly/releases/latest)
 2. Run the installer (Windows only) (Linux and MacOS users can run the application using the source code)
 3. For some reason, the installer does not create a desktop shortcut. You can create one manually by right-clicking on the desktop and selecting "New" > "Shortcut". Then, paste the following path: `C:\Users\%USERNAME%\AppData\Local\cc-tweaked_blockly\cc-tweaked_blockly.exe`
@@ -47,7 +53,7 @@ This project was created to help beginners to learn how to code in Lua using Com
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE.md) file for details
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
 
 ## Disclaimer
 
