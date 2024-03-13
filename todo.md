@@ -1,6 +1,6 @@
 # To do
 
-- [ ] Fix the istaller to create a desktop shortcut
+- [ ] Fix the istaller to WORK
 - [ ] Finish the websocket implementation
 - [ ] Add colors constants and / or color picker
 - [ ] Add Rednet API
@@ -8,8 +8,8 @@
 - [X] Add Turtle API
 - [ ] Add peripheral methods
 - [ ] Add a way to import code from ComputerCraft:Tweaked
-- [ ] Add a way to save the code to a file
-- [ ] Add a way to load a file to the editor
+- [X] Add a way to save the code to a file
+- [X] Add a way to load a file to the editor
 - [ ] Add a way to share the code with others
 - [ ] Add different themes
 - [ ] Add a way to change the language
