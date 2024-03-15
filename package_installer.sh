@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specify the package names
-package_names=("blockly" "@blockly/shadow-block-converter" "package3")
+package_names=("blockly" "@blockly/shadow-block-converter")
 
 # Check if Node.js is installed
 if ! command -v node &> /dev/null; then
