@@ -31,7 +31,7 @@ Thank you for your interest in contributing to ComputerCraft : Tweaked Blockly E
 
 ## 5. Install Packages
 - Download Node.js and npm
-- Launch `package_installer`
+- Launch `package_installer.bat`
 - If you are encountering unexpected error, please make an issue on Github
 
 ## 6. Make Changes
