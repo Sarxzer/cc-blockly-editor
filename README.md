@@ -21,11 +21,8 @@ No installation is required. Just open the application in your browser and start
 3. Open the `index.html` file in your browser
 4. Start coding
 
-#### Windows installer (DO NOT USE, IT IS NOT WORKING)
-1. Download the `cct_blockly_app-1.x.x.Setup.exe` file from the [releases](https://github.com/Sarxzer/cc-tweaked_blockly/releases/latest)
-2. Run the installer (Windows only) (Linux and MacOS users can run the application using the source code)
-3. For some reason, the installer does not create a desktop shortcut. You can create one manually by right-clicking on the desktop and selecting "New" > "Shortcut". Then, paste the following path: `C:\Users\%USERNAME%\AppData\Local\cc-tweaked_blockly\cc-tweaked_blockly.exe`
-4. Open the application
+#### Windows installer (DEPRECATED)
+We stoped doing Windows installer because our application is lightweight and the installer wasn't working
 
 ## Usage
 
