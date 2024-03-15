@@ -8,6 +8,7 @@ rem Check if Node.js is installed
 where node >nul 2>nul
 if %errorlevel% neq 0 (
     echo Node.js is not installed. Please install Node.js before running this script.
+    pause
     exit /b 1
 )
 
@@ -15,6 +16,7 @@ rem Check if npm is installed
 where npm >nul 2>nul
 if %errorlevel% neq 0 (
     echo npm is not installed. Please install npm before running this script.
+    pause
     exit /b 1
 )
 
@@ -31,4 +33,5 @@ for %%i in (%package_names%) do (
     )
 )
 
+pause
 endlocal
