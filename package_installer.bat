@@ -1,29 +1,37 @@
-#!/bin/bash
+@echo off
+setlocal
 
-# Specify the package names
-package_names=("blockly" "@blockly/shadow-block-converter")
+rem Specify the package names
+set "package_names=blockly @blockly/shadow-block-converter"
 
-# Check if Node.js is installed
-if ! command -v node &> /dev/null; then
-    echo "Node.js is not installed. Please install Node.js before running this script."
-    exit 1
-fi
+rem Check if Node.js is installed
+where node >nul 2>nul
+if %errorlevel% neq 0 (
+    echo Node.js is not installed. Please install Node.js before running this script.
+    pause
+    exit /b 1
+)
 
-# Check if npm is installed
-if ! command -v npm &> /dev/null; then
-    echo "npm is not installed. Please install npm before running this script."
-    exit 1
-fi
+rem Check if npm is installed
+where npm >nul 2>nul
+if %errorlevel% neq 0 (
+    echo npm is not installed. Please install npm before running this script.
+    pause
+    exit /b 1
+)
 
-# Loop over the array and install each package
-for package_name in "${package_names[@]}"; do
-    echo "Installing $package_name..."
-    npm install $package_name
+rem Loop over the array and install each package
+for %%i in (%package_names%) do (
+    echo Installing %%i...
+    npm install %%i
 
-    # Check if the installation was successful
-    if [ $? -eq 0 ]; then
-        echo "Package $package_name has been successfully installed."
-    else
-        echo "Failed to install package $package_name."
-    fi
-done
+    rem Check if the installation was successful
+    if %errorlevel% equ 0 (
+        echo Package %%i has been successfully installed.
+    ) else (
+        echo Failed to install package %%i.
+    )
+)
+
+pause
+endlocal
