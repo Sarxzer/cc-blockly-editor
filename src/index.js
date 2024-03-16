@@ -66,5 +66,56 @@ const loadWorkspace = () => {
   };
 };
 
+const uploadToPastebin = () => {
+  const code = luaGenerator.workspaceToCode(ws);
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://pastebin.com/api/api_post.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      const url = xhr.responseText;
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.click();
+    }
+  };
+  xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_key=d43a286490fa94b7d413dd2f5eb8d38d&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
+}
+
+const uploadWorkspaceToPastebin = () => {
+  const workspace = save(ws);
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://pastebin.com/api/api_post.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      const url = xhr.responseText;
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.click();
+    }
+  };
+  xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_key=d43a286490fa94b7d413dd2f5eb8d38d&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(workspace)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | workspace (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=json`);
+}
+
+const loadWorkspaceFromPastebin = () => {
+  const id = prompt('Enter pastebin ID');
+  if (!id) return;
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', `pastebin.php?id=${id}`, true);
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      load(ws, xhr.responseText);
+      console.log(xhr.responseText);
+    }
+  };
+  xhr.send();
+}
+
 downloadButton.onclick = downloadWorkspace;
+uploadButton.onclick = uploadToPastebin;
+uploadWorkspaceButton.onclick = uploadWorkspaceToPastebin;
+loadWorkspaceButton.onclick = loadWorkspaceFromPastebin;
 loadButton.onclick = loadWorkspace;
