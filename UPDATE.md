@@ -2,7 +2,7 @@
 
 ## Version 1.1.4
 
-We're excited to announce the release of version 1.1.4 of the ComputerCraft Blockly Editor. This update brings some enhancements to the user interface and introduces syntax highlighting for a better coding experience.
+We're excited to announce the release of version 1.1.4 of the ComputerCraft : Blockly Editor. This update brings some enhancements to the user interface and introduces syntax highlighting for a better coding experience.
 
 ### New Features
 - **Prism.js Syntax Highlighter**: We've integrated Prism.js into our editor. This feature provides syntax highlighting for your Lua code, making it easier to read and understand.
@@ -16,7 +16,7 @@ We're excited to announce the release of version 1.1.4 of the ComputerCraft Bloc
 
 ## Version 1.1.3
 
-We're delighted to announce the release of version 1.1.3 of the ComputerCraft Blockly Editor. This update introduces several new features that enhance the usability and functionality of our editor.
+We're delighted to announce the release of version 1.1.3 of the ComputerCraft : Blockly Editor. This update introduces several new features that enhance the usability and functionality of our editor.
 
 ### New Features
 - **Editable Shadow Blocks**: We've improved our shadow blocks. Now, they turn into normal blocks when you edit them. This feature makes it easier for you to customize your scripts.
@@ -29,7 +29,7 @@ We're delighted to announce the release of version 1.1.3 of the ComputerCraft Bl
 
 ## Version 1.1.2
 
-In this update, we've introduced some significant enhancements to our ComputerCraft Blockly Editor.
+In this update, we've introduced some significant enhancements to our ComputerCraft : Blockly Editor.
 
 ### New Features
 - **WebSocket Blocks**: We're thrilled to announce the addition of WebSocket blocks to our Blockly Editor. This feature enables you to access WebSocket from your computer. The new blocks include Open WebSocket, Send to WebSocket, Receive from WebSocket, and Close WebSocket.
@@ -44,7 +44,7 @@ In this update, we've introduced some significant enhancements to our ComputerCr
 
 ## Version 1.1.1
 
-This update brings a significant change to the file saving format of our ComputerCraft Blockly Editor.
+This update brings a significant change to the file saving format of our ComputerCraft : Blockly Editor.
 
 ### Changes
 - **File Saving Format**: Based on user feedback, we've updated the file saving format. Previously, the code was exported and saved as a .lua file, but the content was in JSON format. Starting from this version, the code will be exported and saved as a .json file.
@@ -55,7 +55,7 @@ This update brings a significant change to the file saving format of our Compute
 
 ## Version 1.1.0
 
-We're excited to announce the release of version 1.1.0 of the ComputerCraft Blockly Editor. This update introduces a highly requested feature - the ability to save and load files.
+We're excited to announce the release of version 1.1.0 of the ComputerCraft : Blockly Editor. This update introduces a highly requested feature - the ability to save and load files.
 
 ### New Features
 - **Save and Load Files**: You can now save your progress and load it back whenever you want. This feature allows you to work on your scripts over multiple sessions without losing any progress.
@@ -69,7 +69,7 @@ We're excited to announce the release of version 1.1.0 of the ComputerCraft Bloc
 
 ## Release 1.0.0
 
-We are excited to announce the first release of our ComputerCraft Blockly Editor!
+We are excited to announce the first release of our ComputerCraft : Blockly Editor!
 
 ### New Features
 - **Visual Code Editor for ComputerCraft**: A visual, block-based interface for creating Lua scripts for the ComputerCraft Minecraft mod.
