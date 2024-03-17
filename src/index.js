@@ -5,6 +5,8 @@ import { luaGenerator } from "blockly/lua";
 import { save, load } from "./serialization";
 import { toolbox } from "./toolbox";
 import "./index.css";
+import "./prism";
+import "./prism.css";
 
 import {shadowBlockConversionChangeListener} from '@blockly/shadow-block-converter';
 

@@ -3,23 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <title>CC Lua Code Generator</title>
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="prism.css" />
   </head>
   <body>
     <div id="pageContainer">
       <div id="outputPane">
-        <pre id="generatedCode"><code></code></pre>
-        <div id="output"></div>
-        <button onclick="navigator.clipboard.writeText(document.getElementById(`generatedCode`).firstChild.innerText)">Copy</button>
+        <pre id="generatedCode" style="min-height: 600px;"><code class="language-lua"></code></pre>
         <input type="text" name="fileName" id="fileName" value="program">
         <button id="downloadButton">Download</button>
         <button id="uploadButton">Upload to Pastebin</button>
         <button id="uploadWorkspaceButton">Upload Workspace to Pastebin</button>
         <button id="loadWorkspaceButton">Load Workspace from Pastebin</button>
         <button id="loadButton">Load</button>
-
       </div>
       <div id="blocklyDiv"></div>
     </div>
+    <script src="prism.js"></script>
   </body>
 </html>

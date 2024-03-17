@@ -29,11 +29,12 @@ pre, code {
     margin: 1rem;
 }
 
-#generatedCode {
-    height: 50%;
-    background-color: rgb(247, 240, 228);
-}
-
 #output {
     height: 50%;
+}
+
+.copy-to-clipboard-button {
+    margin: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
 }
