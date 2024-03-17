@@ -1,14 +1,14 @@
-# ComputerCraft : Tweaked Blockly Editor
+# ComputerCraft Blockly Editor
 
-This application is a visual code editor for ComputerCraft:Tweaked, a Minecraft mod that adds in-game Computers. Each computer comes with its own Operating System and a programming language called Lua. This Blockly application allows you to create Lua scripts for ComputerCraft:Tweaked using a visual block-based interface.
+This application is a visual code editor for ComputerCraft and ComputerCraft:Tweaked, a Minecraft mod that adds in-game Computers. Each computer comes with its own Operating System and a programming language called Lua. This Blockly application allows you to create Lua scripts for ComputerCraft using a visual block-based interface.
 
-Blockly is a Google libraries that add visual programation for educational or beginner purposes. This project is a fork of the original Blockly project, with some modifications to fit the ComputerCraft:Tweaked environment.
+Blockly is a Google libraries that add visual programation for educational or beginner purposes. This project is a fork of the original Blockly project, with some modifications to fit the ComputerCraft environment.
 
 ## Features
 
-- Visual code editor for ComputerCraft:Tweaked
+- Visual code editor for ComputerCraft and ComputerCraft:Tweaked
 - Block-based interface
-- Export code to ComputerCraft:Tweaked
+- Export code to ComputerCraft
 
 ## Installation
 
@@ -16,26 +16,26 @@ No installation is required. Just open the application in your browser and start
 
 ### For offline usage
 #### Html file
-1. Download the `cc-tweaked_blockly-1.x.x.zip` file from the [releases](https://github.com/Sarxzer/cc-tweaked_blockly/releases/latest)
+1. Download the `cc-blockly-editor-1.x.x.zip` file from the [releases](https://github.com/Sarxzer/cc-blockly-editor/releases/latest)
 2. Extract the files
 3. Open the `index.html` file in your browser
 4. Start coding
 
 #### Windows installer (DEPRECATED)
-We stoped doing Windows installer because our application is lightweight and the installer wasn't working
+We stopped doing Windows installer because our application is lightweight and the installer wasn't working
 
 ## Usage
 
 1. Open the application in your browser
 2. Start coding
-3. Export the code to ComputerCraft:Tweaked
+3. Export the code to ComputerCraft
 4. Run the code in the game
 
-## [Contributing](https://github.com/Sarxzer/cc-tweaked_blockly/blob/main/CONTRIBUTE.md)
+## [Contributing](https://github.com/Sarxzer/cc-blockly-editor/blob/main/CONTRIBUTE.md)
 
 ## History
 
-This project was created to help beginners to learn how to code in Lua using ComputerCraft:Tweaked. The original Blockly project was modified to fit the ComputerCraft:Tweaked environment.
+This project was created to help beginners to learn how to code in Lua using ComputerCraft. The original Blockly project was modified to fit the ComputerCraft environment.
 
 ## Credits
 
@@ -48,7 +48,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Disclaimer
 
-This project is not affiliated with ComputerCraft:Tweaked or Google Blockly. It is an independent project created to help beginners to learn how to code in Lua using ComputerCraft:Tweaked.
+This project is not affiliated with ComputerCraft or Google Blockly. It is an independent project created to help beginners to learn how to code in Lua using ComputerCraft.
 
 ## Contact
 
