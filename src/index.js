@@ -1,6 +1,6 @@
 import * as Blockly from "blockly";
-import { blocks } from "./blocks/text";
-import { forBlock } from "./generators/javascript";
+import { blocks } from "./blocks/custom";
+import { forBlock } from "./generators/lua";
 import { luaGenerator } from "blockly/lua";
 import { save, load } from "./serialization";
 import { toolbox } from "./toolbox";
