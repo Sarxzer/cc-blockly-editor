@@ -1,5 +1,19 @@
 # Release Notes
 
+## Version 1.1.4
+
+We're excited to announce the release of version 1.1.4 of the ComputerCraft : Tweaked Blockly Editor. This update brings some enhancements to the user interface and introduces syntax highlighting for a better coding experience.
+
+### New Features
+- **Prism.js Syntax Highlighter**: We've integrated Prism.js into our editor. This feature provides syntax highlighting for your Lua code, making it easier to read and understand.
+  
+### Changes
+- **Small UI Improvements**: We've made some minor adjustments to the user interface to improve usability and aesthetics.
+
+**Full Changelog**: https://github.com/Sarxzer/cc-tweaked_blockly/compare/v1.1.3...v1.1.4
+
+---
+
 ## Version 1.1.3
 
 We're delighted to announce the release of version 1.1.3 of the ComputerCraft : Tweaked Blockly Editor. This update introduces several new features that enhance the usability and functionality of our editor.
