@@ -1,8 +1,19 @@
 # Release Notes
 
+## Version 1.1.5.1 Update
+
+This minor update brings a significant improvement to the saving system of the ComputerCraft : Blockly Editor.
+
+### Changes
+- **Improved Saving System**: The saving system, which previously saved an empty object, has been fixed. It now correctly saves the workspace, Lua code, workspace name, save date, and cc:be version. This enhancement provides more context and information in each save file, improving the user's ability to manage and understand their saved data.
+
+**Full Changelog**: https://github.com/Sarxzer/cc-blockly-editor/compare/v1.1.5...v1.1.5.1
+
+---
+
 ## Version 1.1.5
 
-We're excited to announce the release of version 1.1.5 of the ComputerCraft Blockly Editor. This update brings some changes to the file format, security, and user interface.
+We're excited to announce the release of version 1.1.5 of the ComputerCraft : Blockly Editor. This update brings some changes to the file format, security, and user interface.
 
 ### Changes
 - **Downloaded Workspace File Format**: The downloaded workspace will now be a `.ccbe` file instead of a `.json`. This change is to standardize the file format for the Blockly editor.
