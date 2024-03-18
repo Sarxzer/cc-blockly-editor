@@ -84,8 +84,11 @@ const uploadToPastebin = () => {
       a.click();
     }
   };
-  
-  xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_key=${secret['api_user_key']}&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
+  if (secret['connected'] === false) {
+    xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_key=${secret['api_user_key']}&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
+  } else {
+    xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
+  }
 }
 
 const uploadWorkspaceToPastebin = () => {
@@ -102,7 +105,11 @@ const uploadWorkspaceToPastebin = () => {
       a.click();
     }
   };
-  xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_key=d43a286490fa94b7d413dd2f5eb8d38d&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(workspace)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | workspace (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=json`);
+  if (secret['connected'] === false) {
+    xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_key=${secret['api_user_key']}&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(workspace)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | workspace (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=json`);
+  } else {
+    xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_option=paste&api_paste_code=${encodeURIComponent(workspace)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | workspace (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=json`);
+  }
 }
 
 const loadWorkspaceFromPastebin = () => {
@@ -119,8 +126,32 @@ const loadWorkspaceFromPastebin = () => {
   xhr.send();
 }
 
+//const connectToPastebin = () => {
+//  const username = prompt('Enter pastebin username');
+//  const password = prompt('Enter pastebin password');
+//  const xhr = new XMLHttpRequest();
+//  xhr.open('POST', 'https://pastebin.com/api/api_login.php', true);
+//  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//  xhr.onreadystatechange = () => {
+//    if (xhr.readyState == 4 && xhr.status == 200) {
+//      const response = xhr.responseText;
+//      if (response.startsWith('Bad API request')) {
+//        alert('Invalid username or password');
+//      } else {
+//        secret['api_user_key'] = response;
+//        alert('Connected to pastebin');
+//        connectButton.disabled = true;
+//        connectButton.innerText = 'Connected';
+//      }
+//    }
+//  };
+//  xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_name=${username}&api_user_password=${password}`);
+//}
+
+
 downloadButton.onclick = downloadWorkspace;
-uploadButton.onclick = uploadToPastebin;
-uploadWorkspaceButton.onclick = uploadWorkspaceToPastebin;
-loadWorkspaceButton.onclick = loadWorkspaceFromPastebin;
 loadButton.onclick = loadWorkspace;
+//connectButton.onclick = connectToPastebin;
+//uploadButton.onclick = uploadToPastebin;
+//uploadWorkspaceButton.onclick = uploadWorkspaceToPastebin;
+//loadWorkspaceButton.onclick = loadWorkspaceFromPastebin;
