@@ -29,21 +29,26 @@ Thank you for your interest in contributing to ComputerCraft : Tweaked Blockly E
   git checkout -b <branch-name>
   ```
 
-## 5. Install Packages
+## 5. Install Packages and Dependencies
 - Download Node.js and npm
 - Launch `package_installer.bat`
 - If you are encountering unexpected error, please make an issue on Github
 
-## 6. Make Changes
+## 6. Fill with your API Key
+- Go to `src/secret.json`
+- Fill the `api_user_key` with your API User Key (get it from `api_user_key.bat`)
+- Fill the `api_dev_key` with your API Dev Key from [Pastebin](https://pastebin.com/doc_api)
+
+## 7. Make Changes
 - Make the necessary changes to the project using your preferred text editor or IDE.
 
-## 7. Test your change
+## 8. Test your change
 - Just do 
   ```bash
   npm start
   ```
 
-## 8. Stage and Commit Changes
+## 9. Stage and Commit Changes
 - Stage the changes you've made.
   ```bash
   git add .
@@ -53,20 +58,20 @@ Thank you for your interest in contributing to ComputerCraft : Tweaked Blockly E
   git commit -m "Add feature: <description>"
   ```
 
-## 9. Push Changes to Your Fork
+## 10. Push Changes to Your Fork
 - Push your changes to your forked repository on GitHub.
   ```bash
   git push origin <branch-name>
   ```
 
-## 10. Create a Pull Request
+## 11. Create a Pull Request
 - Visit your forked repository on GitHub.
 - Click on the "Compare & pull request" button next to the branch you just pushed.
 - Provide a descriptive title and comment for your pull request.
 - Click on the "Create pull request" button to submit your changes for review.
 - We will review your pull request and see if we can merged it with the original repository.
 
-## 11. Keep Your Fork Updated (Optional)
+## 12. Keep Your Fork Updated (Optional)
 - To keep your fork updated with the original repository, fetch changes from the upstream repository and merge them into your local master branch.
   ```bash
   git fetch upstream
