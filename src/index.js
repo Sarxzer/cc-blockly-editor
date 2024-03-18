@@ -52,11 +52,13 @@ const loadButton = document.getElementById('loadButton');
 
 const downloadWorkspace = () => {
   const json = {
+    "name": fileName.value || "workspace",
     "version": version,
     "date": date,
-    "workspace": save(ws)
+    "workspace": save(ws),
+    "lua": luaGenerator.workspaceToCode(ws)
   }
-  const blob = new Blob([json], { type: 'application/json' });
+  const blob = new Blob([JSON.stringify(json)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -73,67 +75,70 @@ const loadWorkspace = () => {
     const file = input.files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      load(ws, reader.result['workspace']);
+      const json = JSON.parse(reader.result);
+      load(ws, json['workspace']);
+      fileName.value = json['name'];
+      codeDiv.innerText = json['lua'];
     };
     reader.readAsText(file);
   };
 };
 
-const uploadToPastebin = () => {
-  const code = luaGenerator.workspaceToCode(ws);
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://pastebin.com/api/api_post.php', true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      const url = xhr.responseText;
-      const a = document.createElement('a');
-      a.href = url;
-      a.target = '_blank';
-      a.click();
-    }
-  };
-  if (secret['connected'] === false) {
-    xhr.send(`api_dev_key=${secret['api_dev_key']}&api_user_key=${secret['api_user_key']}&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
-  } else {
-    xhr.send(`api_dev_key=${secret['api_dev_key']}&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
-  }
-}
+//const uploadToPastebin = () => {
+//  const code = luaGenerator.workspaceToCode(ws);
+//  const xhr = new XMLHttpRequest();
+//  xhr.open('POST', 'https://pastebin.com/api/api_post.php', true);
+//  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//  xhr.onreadystatechange = () => {
+//    if (xhr.readyState == 4 && xhr.status == 200) {
+//      const url = xhr.responseText;
+//      const a = document.createElement('a');
+//      a.href = url;
+//      a.target = '_blank';
+//      a.click();
+//    }
+//  };
+//  if (secret['connected'] === false) {
+//    xhr.send(`api_dev_key=${secret['api_dev_key']}&api_user_key=${secret['api_user_key']}&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
+//  } else {
+//    xhr.send(`api_dev_key=${secret['api_dev_key']}&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
+//  }
+//}
 
-const uploadWorkspaceToPastebin = () => {
-  const workspace = save(ws);
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://pastebin.com/api/api_post.php', true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      const url = xhr.responseText;
-      const a = document.createElement('a');
-      a.href = url;
-      a.target = '_blank';
-      a.click();
-    }
-  };
-  if (secret['connected'] === false) {
-    xhr.send(`api_dev_key=${secret['api_dev_key']}&api_user_key=${secret['api_user_key']}&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(workspace)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | workspace (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=json`);
-  } else {
-    xhr.send(`api_dev_key=${secret['api_dev_key']}&api_option=paste&api_paste_code=${encodeURIComponent(workspace)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | workspace (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=json`);
-  }
-}
+//const uploadWorkspaceToPastebin = () => {
+//  const workspace = save(ws);
+//  const xhr = new XMLHttpRequest();
+//  xhr.open('POST', 'https://pastebin.com/api/api_post.php', true);
+//  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//  xhr.onreadystatechange = () => {
+//    if (xhr.readyState == 4 && xhr.status == 200) {
+//      const url = xhr.responseText;
+//      const a = document.createElement('a');
+//      a.href = url;
+//      a.target = '_blank';
+//      a.click();
+//    }
+//  };
+//  if (secret['connected'] === false) {
+//    xhr.send(`api_dev_key=${secret['api_dev_key']}&api_user_key=${secret['api_user_key']}&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(workspace)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | workspace (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=json`);
+//  } else {
+//    xhr.send(`api_dev_key=${secret['api_dev_key']}&api_option=paste&api_paste_code=${encodeURIComponent(workspace)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | workspace (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=json`);
+//  }
+//}
 
-const loadWorkspaceFromPastebin = () => {
-  const id = prompt('Enter pastebin ID');
-  if (!id) return;
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', `pastebin.php?id=${id}`, true);
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      load(ws, xhr.responseText);
-      console.log(xhr.responseText);
-    }
-  };
-  xhr.send();
-}
+//const loadWorkspaceFromPastebin = () => {
+//  const id = prompt('Enter pastebin ID');
+//  if (!id) return;
+//  const xhr = new XMLHttpRequest();
+//  xhr.open('GET', `pastebin.php?id=${id}`, true);
+//  xhr.onreadystatechange = () => {
+//    if (xhr.readyState == 4 && xhr.status == 200) {
+//      load(ws, xhr.responseText);
+//      console.log(xhr.responseText);
+//    }
+//  };
+//  xhr.send();
+//}
 
 //const connectToPastebin = () => {
 //  const username = prompt('Enter pastebin username');
