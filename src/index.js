@@ -12,6 +12,11 @@ import {shadowBlockConversionChangeListener} from '@blockly/shadow-block-convert
 
 const secret = require('./secret.json');
 
+// Variables
+const version = "1.1.4";
+const date = new Date().toUTCString();
+
+
 Blockly.common.defineBlocks(blocks);
 Object.assign(luaGenerator.forBlock, forBlock);
 
@@ -46,25 +51,29 @@ const downloadButton = document.getElementById('downloadButton');
 const loadButton = document.getElementById('loadButton');
 
 const downloadWorkspace = () => {
-  const json = save(ws);
+  const json = {
+    "version": version,
+    "date": date,
+    "workspace": save(ws)
+  }
   const blob = new Blob([json], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = fileName.value || 'workspace.json';
+  a.download = (fileName.value || 'workspace.json') + '.ccbe';
   a.click();
 };
 
 const loadWorkspace = () => {
   const input = document.createElement('input');
   input.type = 'file';
-  input.accept = '.json';
+  input.accept = '.ccbe';
   input.click();
   input.onchange = () => {
     const file = input.files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      load(ws, reader.result);
+      load(ws, reader.result['workspace']);
     };
     reader.readAsText(file);
   };
