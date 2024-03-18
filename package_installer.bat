@@ -33,5 +33,15 @@ for %%i in (%package_names%) do (
     )
 )
 
+rem Create mising files (secret.js)
+echo Creating missing files...
+if not exist src\secret.js (
+    echo The file src\secret.js does not exist. Creating it...
+    echo {"api_user_key": "YOUR_PASTEBIN_API_USER_KEY","api_dev_key" : "YOUR_PASTEBIN_API_DEV_KEY"} > src\secret.js
+    echo File src\secret.js has been created.
+) else (
+    echo File src\secret.js already exists.
+)
+
 pause
 endlocal
