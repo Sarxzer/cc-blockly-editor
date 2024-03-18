@@ -10,6 +10,8 @@ import "./prism.css";
 
 import {shadowBlockConversionChangeListener} from '@blockly/shadow-block-converter';
 
+const secret = require('./secret.json');
+
 Blockly.common.defineBlocks(blocks);
 Object.assign(luaGenerator.forBlock, forBlock);
 
@@ -82,7 +84,8 @@ const uploadToPastebin = () => {
       a.click();
     }
   };
-  xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_key=d43a286490fa94b7d413dd2f5eb8d38d&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
+  
+  xhr.send(`api_dev_key=nSfNmQEF3ttNwx-zjU5MvguXnz8Oruw7&api_user_key=${secret['api_user_key']}&api_folder_key=5BbL8uf5&api_option=paste&api_paste_code=${encodeURIComponent(code)}&api_paste_private=1&api_paste_name=${(fileName.value || 'workspace') + ' | lua (' + Math.random().toString(36).substring(7) + ')'}&api_paste_format=lua`);
 }
 
 const uploadWorkspaceToPastebin = () => {
