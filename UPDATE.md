@@ -1,5 +1,18 @@
 # Release Notes
 
+## Version 1.1.5
+
+We're excited to announce the release of version 1.1.5 of the ComputerCraft Blockly Editor. This update brings some changes to the file format, security, and user interface.
+
+### Changes
+- **Downloaded Workspace File Format**: The downloaded workspace will now be a `.ccbe` file instead of a `.json`. This change is to standardize the file format for the Blockly editor.
+- **Pastebin Feature Temporarily Disabled**: The save and load to Pastebin feature has been temporarily stopped due to some major security issues. We are working on a fix and hope to bring this feature back soon.
+- **Small UI Improvements**: We've made some minor adjustments to the user interface to improve usability and aesthetics.
+
+**Full Changelog**: https://github.com/Sarxzer/cc-blockly-editor/compare/v1.1.4...v1.1.5
+
+---
+
 ## Version 1.1.4
 
 We're excited to announce the release of version 1.1.4 of the ComputerCraft : Blockly Editor. This update brings some enhancements to the user interface and introduces syntax highlighting for a better coding experience.
