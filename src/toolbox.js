@@ -701,7 +701,7 @@ export const toolbox = {
         {
           kind: "block",
           type: "side",
-        }
+        },
       ],
     },
     {
@@ -814,7 +814,6 @@ export const toolbox = {
         { kind: "block", type: "fs_isdriveroot" },
       ],
     },
-
 
     {
       kind: "category",
@@ -1091,7 +1090,7 @@ export const toolbox = {
           kind: "block",
           type: "http_websocket_close",
         },
-      ]
+      ],
     },
 
     {
@@ -1277,7 +1276,7 @@ export const toolbox = {
             },
           },
         },
-      ]
+      ],
     },
     {
       kind: "category",
@@ -1400,7 +1399,7 @@ export const toolbox = {
                 },
               },
             },
-          }
+          },
         },
         {
           kind: "block",
@@ -1414,7 +1413,7 @@ export const toolbox = {
                 },
               },
             },
-          }
+          },
         },
         {
           kind: "block",
@@ -1432,7 +1431,7 @@ export const toolbox = {
                 },
               },
             },
-          }
+          },
         },
         {
           kind: "block",
@@ -1454,7 +1453,7 @@ export const toolbox = {
                 },
               },
             },
-          }
+          },
         },
         {
           kind: "block",
@@ -1472,9 +1471,9 @@ export const toolbox = {
                 },
               },
             },
-          }
+          },
         },
-      ]
+      ],
     },
     {
       kind: "sep",
