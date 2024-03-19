@@ -66,6 +66,16 @@ const downloadWorkspace = () => {
   a.click();
 };
 
+const downloadLua = () => {
+  const code = luaGenerator.workspaceToCode(ws);
+  const blob = new Blob([code], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = (fileName.value || 'workspace') + '.lua';
+  a.click();
+};
+
 const loadWorkspace = () => {
   const input = document.createElement('input');
   input.type = 'file';
@@ -164,6 +174,7 @@ const loadWorkspace = () => {
 
 
 downloadButton.onclick = downloadWorkspace;
+downloadLuaButton.onclick = downloadLua;
 loadButton.onclick = loadWorkspace;
 //connectButton.onclick = connectToPastebin;
 //uploadButton.onclick = uploadToPastebin;

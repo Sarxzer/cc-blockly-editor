@@ -6,6 +6,42 @@
 
 import * as Blockly from "blockly/core";
 
+const table = {
+  type: "table",
+  message0: "Table %1",
+  args0: [
+    {
+      type: "input_statement",
+      name: "FIELDS",
+    },
+  ],
+  colour: 100,
+  tooltip: "Create a table",
+  helpUrl: "",
+  output: "table",
+};
+
+const table_field = {
+  type: "table_field",
+  message0: "Field %1 %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "KEY",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "VALUE",
+    },
+  ],
+  previousStatement: "table_field",
+  nextStatement: "table_field",
+  colour: 100,
+  tooltip: "Add a field to a table",
+  helpUrl: "",
+};
+
 const sleep = {
   type: "sleep",
   message0: "Wait %1 seconds",
@@ -1230,12 +1266,12 @@ const side = {
       type: "field_dropdown",
       name: "SIDE",
       options: [
-        ["bottom", "bottom"],
-        ["top", "top"],
-        ["front", "front"],
-        ["back", "back"],
-        ["left", "left"],
-        ["right", "right"],
+        ["bottom", '"bottom"'],
+        ["top", '"top"'],
+        ["front", '"front"'],
+        ["back", '"back"'],
+        ["left", '"left"'],
+        ["right", '"right"'],
       ],
 
     },
@@ -1582,7 +1618,7 @@ const rs_getsides = {
 
 const rs_setoutput = {
   type: "rs_setoutput",
-  message0: "Set signal on side %1 to %2",
+  message0: "Set redstone signal on side %1 to %2",
   args0: [
     {
       type: "input_value",
@@ -1599,13 +1635,13 @@ const rs_setoutput = {
   nextStatement: null,
   inputsInline: true,
   colour: 100,
-  tooltip: "Set the output on a side between on and off",
+  tooltip: "Set the redstone output on a side between on and off",
   helpUrl: "",
 };
 
 const rs_getoutput = {
   type: "rs_getoutput",
-  message0: "Get output signal on side %1",
+  message0: "Get redstone output signal on side %1",
   args0: [
     {
       type: "input_value",
@@ -1614,14 +1650,14 @@ const rs_getoutput = {
     },
   ],
   colour: 100,
-  tooltip: "Get the output on a side",
+  tooltip: "Get the redstone output on a side",
   helpUrl: "",
   output: "Boolean",
 };
 
 const rs_getinput = {
   type: "rs_getinput",
-  message0: "Get input signal on side %1",
+  message0: "Get redstone input signal on side %1",
   args0: [
     {
       type: "input_value",
@@ -1630,14 +1666,14 @@ const rs_getinput = {
     },
   ],
   colour: 100,
-  tooltip: "Get the input on a side",
+  tooltip: "Get the redstone input on a side",
   helpUrl: "",
   output: "Boolean",
 };
 
 const rs_setanalogoutput = {
   type: "rs_setanalogoutput",
-  message0: "Set analog signal on side %1 to %2",
+  message0: "Set redstone analog signal on side %1 to %2",
   args0: [
     {
       type: "input_value",
@@ -1654,7 +1690,7 @@ const rs_setanalogoutput = {
   nextStatement: null,
   inputsInline: true,
   colour: 100,
-  tooltip: "Set the analog output on a side to a value between 0 and 15",
+  tooltip: "Set the redstone analog output on a side to a value between 0 and 15",
   helpUrl: "",
 };
 
@@ -1676,7 +1712,7 @@ const rs_getanalogoutput = {
 
 const rs_getanaloginput = {
   type: "rs_getanaloginput",
-  message0: "Get analog input signal on side %1",
+  message0: "Get redstone analog input signal on side %1",
   args0: [
     {
       type: "input_value",
@@ -1685,7 +1721,7 @@ const rs_getanaloginput = {
     },
   ],
   colour: 100,
-  tooltip: "Get the analog input on a side",
+  tooltip: "Get the redstone analog input on a side",
   helpUrl: "",
   output: "Number",
 };
@@ -1831,7 +1867,12 @@ const rn_send = {
     {
       type: "input_value",
       name: "MESSAGE",
-      check: "String",
+      check: [
+        "String",
+        "Number",
+        "Boolean",
+        "Array"
+      ],
     },
     {
       type: "input_value",
@@ -1858,7 +1899,12 @@ const rn_broadcast = {
     {
       type: "input_value",
       name: "MESSAGE",
-      check: "String",
+      check: [
+        "String",
+        "Number",
+        "Boolean",
+        "Array"
+      ],
     },
     {
       type: "input_value",
@@ -1875,7 +1921,16 @@ const rn_broadcast = {
 
 const rn_receive = {
   type: "rn_receive",
-  message0: "Receive with timeout %1 and protocol filter %2 (optional)",
+  message0: "Receive",
+  colour: 100,
+  tooltip: "Receive a message from the rednet",
+  helpUrl: "",
+  output: "Array",
+};
+
+const rn_receivewith = {
+  type: "rn_receivewith",
+  message0: "Receive with timeout %1 and/or protocol filter %2",
   args0: [
     {
       type: "input_value",
@@ -1888,31 +1943,33 @@ const rn_receive = {
       check: "String",
     },
   ],
+  inputsInline: true,
   colour: 100,
-  tooltip: "Receive a message from the rednet",
+  tooltip: "Receive a message from the rednet with a timeout and a filter",
   helpUrl: "",
   output: "Array",
 };
 
 const rn_host = {
   type: "rn_host",
-  message0: "Host %1 with protocol %2",
+  message0: "Host protocol %1 with hostname %2",
   args0: [
-    {
-      type: "input_value",
-      name: "ID",
-      check: "Number",
-    },
     {
       type: "input_value",
       name: "FILTER",
       check: "String",
     },
+    {
+      type: "input_value",
+      name: "HOSTNAME",
+      check: "String",
+    },
   ],
+  inputsInline: true,
   previousStatement: null,
   nextStatement: null,
   colour: 100,
-  tooltip: "Register a computer as a host for a specific protocol",
+  tooltip: "Register the computer as a host for a specific protocol",
   helpUrl: "",
 };
 
@@ -1929,7 +1986,7 @@ const rn_unhost = {
   previousStatement: null,
   nextStatement: null,
   colour: 100,
-  tooltip: "Unregister a computer as a host for a specific protocol",
+  tooltip: "Unregister the computer as a host for a specific protocol",
   helpUrl: "",
 };
 
@@ -1960,6 +2017,10 @@ const rn_lookup = {
 // This does not register their definitions with Blockly.
 // This file has no side effects!
 export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
+  table,
+  table_field,
+
+
   sleep,
   print,
   printerror,
@@ -2077,6 +2138,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   rn_send,
   rn_broadcast,
   rn_receive,
+  rn_receivewith,
   rn_host,
   rn_unhost,
   rn_lookup,

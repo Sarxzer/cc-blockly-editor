@@ -597,7 +597,17 @@ export const toolbox = {
           kind: "block",
           type: "list_getkey",
         },
-        { kind: "block", type: "shallow_copy" },
+        { kind: "block",
+          type: "shallow_copy"
+        },
+        {
+          kind: "block",
+          type: "table",
+        },
+        {
+          kind: "block",
+          type: "table_field",
+        },
       ],
     },
     {
@@ -1409,6 +1419,10 @@ export const toolbox = {
         {
           kind: "block",
           type: "rn_receive",
+        },
+        {
+          kind: "block",
+          type: "rn_receivewith",
           inputs: {
             TIMEOUT: {
               shadow: {
@@ -1423,6 +1437,24 @@ export const toolbox = {
         {
           kind: "block",
           type: "rn_host",
+          inputs: {
+            FILTER: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "chat",
+                },
+              },
+            },
+            HOSTNAME: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "chat_host",
+                },
+              },
+            },
+          }
         },
         {
           kind: "block",

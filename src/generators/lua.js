@@ -11,6 +11,24 @@ import { Order } from "blockly/lua";
 // This file has no side effects!
 export const forBlock = Object.create(null);
 
+forBlock["table"] = function (block, generator) {
+  let fields = generator.statementToCode(block, "FIELDS", Order.NONE);
+  // Remove the indentation
+  fields = fields.replace(/^  /gm, '');
+  // Remove the last comma and newline
+  fields = fields.substring(0, fields.length - 1);
+  const code = `{${fields}}`;
+  return [code, Order.NONE];
+};
+
+forBlock["table_field"] = function (block, generator) {
+  const key = generator.valueToCode(block, "KEY", Order.NONE) || "''";
+  const value = generator.valueToCode(block, "VALUE", Order.NONE) || "''";
+  // Add a comma and newline at the end of each field
+  const code = `[${key}]=${value},`;
+  return code;
+};
+
 forBlock["sleep"] = function (block, generator) {
   const time = generator.valueToCode(block, "SEC", Order.NONE) || "''";
   // Generate the function call for this block.
@@ -437,76 +455,51 @@ forBlock["side"] = function (block, generator) {
 
 forBlock["http_get"] = function (block, generator) {
   const url = generator.valueToCode(block, "URL", Order.NONE) || "''";
-  const headers = generator.valueToCode(block, "HEADERS", Order.NONE) || "''";
+  let headers = generator.valueToCode(block, "HEADERS", Order.NONE) || "";
   // Generate the function call for this block.
-  if (headers != "''") {
-    const code = `http.get(${url},${headers})`;
-    return [code, Order.NONE];
-  } else {
-    const code = `http.get(${url})`;
-    return [code, Order.NONE];
-  }
+  if (headers != "") { headers = `,${headers}`; }
+  const code = `http.get(${url}${headers})`;
+  return [code, Order.NONE];
 }
 
 forBlock["http_post"] = function (block, generator) {
   const url = generator.valueToCode(block, "URL", Order.NONE) || "''";
   const data = generator.valueToCode(block, "DATA", Order.NONE) || "''";
-  const headers = generator.valueToCode(block, "HEADERS", Order.NONE) || "''";
+  let headers = generator.valueToCode(block, "HEADERS", Order.NONE) || "";
   // Generate the function call for this block.
-  if (headers != "''") {
-    const code = `http.post(${url},${data},${headers})`;
-    return [code, Order.NONE];
-  } else {
-    const code = `http.post(${url},${data})`;
-    return [code, Order.NONE];
-  }
+  if (headers != "") { headers = `,${headers}`; }
+  const code = `http.post(${url},${data}${headers})`;
+  return [code, Order.NONE];
 }
 
 forBlock["http_request"] = function (block, generator) {
   const url = generator.valueToCode(block, "URL", Order.NONE) || "''";
   const data = generator.valueToCode(block, "DATA", Order.NONE) || "''";
-  const headers = generator.valueToCode(block, "HEADERS", Order.NONE) || "''";
+  let headers = generator.valueToCode(block, "HEADERS", Order.NONE) || "";
   // Generate the function call for this block.
-  if (headers != "''") {
-    const code = `http.request(${url},${data},${headers})`;
-    return [code, Order.NONE];
-  } else {
-    const code = `http.request(${url},${data})`;
-    return [code, Order.NONE];
-  }
+  if (headers != "") { headers = `,${headers}`; }
+  const code = `http.request(${url},${data}${headers})`;
+  return [code, Order.NONE];
 }
 
 forBlock["http_checkurl"] = function (block, generator) {
   const url = generator.valueToCode(block, "URL", Order.NONE) || "''";
-  const async = generator.valueToCode(block, "ASYNC", Order.NONE) || "''";
+  let async = block.getFieldValue("ASYNC");
   // Generate the function call for this block.
-  if (async != "''") {
-    const code = `http.checkURL(${url},${async})`;
-    return [code, Order.NONE];
-  } else {
-    const code = `http.checkURL(${url})`;
-    return [code, Order.NONE];
-  }
+  async = async == "TRUE" ? ",true" : "";
+  const code = `http.checkURL(${url}${async})`;
+  return [code, Order.NONE];
 }
 
 forBlock["http_websocket"] = function (block, generator) {
   const url = generator.valueToCode(block, "URL", Order.NONE) || "''";
-  const headers = generator.valueToCode(block, "HEADERS", Order.NONE) || "''";
-  const async = block.getFieldValue("ASYNC");
+  let headers = generator.valueToCode(block, "HEADERS", Order.NONE) || "";
+  let async = block.getFieldValue("ASYNC");
   // Generate the function call for this block.
-  if (headers != "''" && async == "TRUE") {
-    const code = `http.websocketAsync(${url},${headers})`;
-    return [code, Order.NONE];
-  } else if (headers != "''") {
-    const code = `http.websocket(${url},${headers})`;
-    return [code, Order.NONE];
-  } else if (async == "TRUE") {
-    const code = `http.websocketAsync(${url})`;
-    return [code, Order.NONE];
-  } else {
-    const code = `http.websocket(${url})`;
-    return [code, Order.NONE];
-  }
+  if (headers != "") { headers = `,${headers}`; }
+  async = async == "TRUE" ? ",true" : "";
+  const code = `http.websocket("${url}"${headers}${async})`;
+  return [code, Order.NONE];
 }
 
 forBlock["http_websocket_receive"] = function (block, generator) {
@@ -521,7 +514,7 @@ forBlock["http_websocket_send"] = function (block, generator) {
   const socket = generator.valueToCode(block, "SOCKET", Order.NONE) || "''";
   const message = generator.valueToCode(block, "MESSAGE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `${socket}.send(${message})\n`;
+  const code = `${socket}.send("${message}")\n`;
   return code;
 }
 
@@ -543,14 +536,14 @@ forBlock["per_getnames"] = function (block, generator) {
 forBlock["per_ispresent"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.isPresent(${name})`;
+  const code = `peripheral.isPresent("${name}")`;
   return [code, Order.NONE];
 }
 
 forBlock["per_gettypes"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.getType(${name})`;
+  const code = `peripheral.getType("${name}")`;
   return [code, Order.NONE];
 }
 
@@ -558,14 +551,14 @@ forBlock["per_hastype"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   const type = generator.valueToCode(block, "TYPE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.hasType(${name},${type})`;
+  const code = `peripheral.hasType("${name}","${type}")`;
   return [code, Order.NONE];
 }
 
 forBlock["per_getmethods"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.getMethods(${name})`;
+  const code = `peripheral.getMethods("${name}")`;
   return [code, Order.NONE];
 }
 
@@ -574,21 +567,21 @@ forBlock["per_call"] = function (block, generator) {
   const method = generator.valueToCode(block, "METHOD", Order.NONE) || "''";
   const args = generator.valueToCode(block, "ARGS", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.call(${name},${method},${args})`;
+  const code = `peripheral.call("${name}","${method}","${args}")`;
   return [code, Order.NONE];
 }
 
 forBlock["per_wrap"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.wrap(${name})`;
+  const code = `peripheral.wrap("${name}")`;
   return [code, Order.NONE];
 }
 
 forBlock["per_find"] = function (block, generator) {
   const type = generator.valueToCode(block, "TYPE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.find(${type})`;
+  const code = `peripheral.find("${type}")`;
   return [code, Order.NONE];
 }
 
@@ -652,7 +645,7 @@ forBlock["rs_getanaloginput"] = function (block, generator) {
 forBlock["rn_chbroadcast"] = function (block, generator) {
   const channel = generator.valueToCode(block, "CHANNEL", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `rednet.CHANNEL_BROADCAST = ${channel}`;
+  const code = `rednet.CHANNEL_BROADCAST = ${channel}\n`;
   return code;
 }
 
@@ -665,7 +658,7 @@ forBlock["rn_getchbroadcast"] = function (block, generator) {
 forBlock["rn_chrepeat"] = function (block, generator) {
   const channel = generator.valueToCode(block, "CHANNEL", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `rednet.CHANNEL_REPEAT = ${channel}`;
+  const code = `rednet.CHANNEL_REPEAT = ${channel}\n`;
   return code;
 }
 
@@ -678,7 +671,7 @@ forBlock["rn_getchrepeat"] = function (block, generator) {
 forBlock["rn_chmaxid"] = function (block, generator) {
   const channel = generator.valueToCode(block, "CHANNEL", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `rednet.CHANNEL_MAXID = ${channel}`;
+  const code = `rednet.CHANNEL_MAXID = ${channel}\n`;
   return code;
 }
 
@@ -691,14 +684,14 @@ forBlock["rn_getchmaxid"] = function (block, generator) {
 forBlock["rn_open"] = function (block, generator) {
   const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `rednet.open(${side})`;
-  return [code, Order.NONE];
+  const code = `rednet.open(${side})\n`;
+  return code;
 }
 
 forBlock["rn_close"] = function (block, generator) {
   const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `rednet.close(${side})`;
+  const code = `rednet.close(${side})\n`;
   return code;
 }
 
@@ -712,25 +705,36 @@ forBlock["rn_isopen"] = function (block, generator) {
 forBlock["rn_send"] = function (block, generator) {
   const id = generator.valueToCode(block, "ID", Order.NONE) || "''";
   const message = generator.valueToCode(block, "MESSAGE", Order.NONE) || "''";
-  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
+  let protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "";
   // Generate the function call for this block.
-  const code = `rednet.send(${id},${message},${protocol})\n`;
+  if (protocol != "") protocol = `,${protocol}`;
+  const code = `rednet.send(${id},${message}${protocol})\n`;
   return code;
 }
 
 forBlock["rn_broadcast"] = function (block, generator) {
   const message = generator.valueToCode(block, "MESSAGE", Order.NONE) || "''";
-  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
+  let protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "";
   // Generate the function call for this block.
-  const code = `rednet.broadcast(${message},${protocol})\n`;
+  if (protocol != "") protocol = `,${protocol}`;
+  const code = `rednet.broadcast(${message}${protocol})\n`;
   return code;
 }
 
 forBlock["rn_receive"] = function (block, generator) {
-  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
-  const timeout = generator.valueToCode(block, "TIMEOUT", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `rednet.receive(${protocol},${timeout})`;
+  const code = `rednet.receive()`;
+  return [code, Order.NONE];
+}
+
+forBlock["rn_receivewith"] = function (block, generator) {
+  let protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "";
+  let timeout = generator.valueToCode(block, "TIMEOUT", Order.NONE) || "";
+  // Generate the function call for this block.
+  if (protocol != "") protocol = `${protocol}`;
+  if (protocol != "" && timeout != "") protocol = `${protocol},`;
+  if (timeout != "" && protocol == "") timeout = `nil,${timeout}`;
+  const code = `rednet.receive(${protocol}${timeout})`;
   return [code, Order.NONE];
 }
 
@@ -738,21 +742,22 @@ forBlock["rn_host"] = function (block, generator) {
   const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
   const hostname = generator.valueToCode(block, "HOSTNAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `rednet.host(${protocol},${hostname})`;
+  const code = `rednet.host(${protocol},${hostname})\n`;
   return code;
 }
 
 forBlock["rn_unhost"] = function (block, generator) {
   const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `rednet.unhost(${protocol})`;
+  const code = `rednet.unhost(${protocol})\n`;
   return code;
 }
 
 forBlock["rn_lookup"] = function (block, generator) {
   const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
-  const hostname = generator.valueToCode(block, "HOSTNAME", Order.NONE) || "''";
+  let hostname = generator.valueToCode(block, "HOSTNAME", Order.NONE) || "";
   // Generate the function call for this block.
-  const code = `rednet.lookup(${protocol},${hostname})`;
+  if (hostname != "") hostname = `,${hostname}`;
+  const code = `rednet.lookup(${protocol}${hostname})`;
   return [code, Order.NONE];
 }
