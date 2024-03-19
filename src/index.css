@@ -29,8 +29,8 @@ pre, code {
     margin: 1rem;
 }
 
-#output {
-    height: 50%;
+#generatedCode {
+    height: 500px;
 }
 
 .copy-to-clipboard-button {

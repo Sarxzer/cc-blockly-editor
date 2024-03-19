@@ -13,7 +13,7 @@ import {shadowBlockConversionChangeListener} from '@blockly/shadow-block-convert
 const secret = require('./secret.json');
 
 // Variables
-const version = "1.1.4";
+const version = "1.1.6";
 const date = new Date().toUTCString();
 
 

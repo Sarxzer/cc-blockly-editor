@@ -1,5 +1,16 @@
 # Release Notes
 
+## Version 1.1.6 Update
+
+We're thrilled to announce the release of version 1.1.6 of the ComputerCraft : Blockly Editor. This update introduces a comprehensive set of Redstone and Rednet blocks, expanding the capabilities of your Lua scripts.
+
+### New Features
+- **Redstone and Rednet Blocks**: This update adds a complete set of Redstone and Rednet blocks to the Blockly Editor. These new blocks allow you to interact with Redstone and the Rednet API, opening up physical and wireless interaction in your Minecraft world.
+
+**Full Changelog**: https://github.com/Sarxzer/cc-blockly-editor/compare/v1.1.5.1...v1.1.6
+
+---
+
 ## Version 1.1.5.1 Update
 
 This minor update brings a significant improvement to the saving system of the ComputerCraft : Blockly Editor.

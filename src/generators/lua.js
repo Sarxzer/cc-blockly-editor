@@ -591,3 +591,168 @@ forBlock["per_find"] = function (block, generator) {
   const code = `peripheral.find(${type})`;
   return [code, Order.NONE];
 }
+
+
+// Redstone
+
+forBlock["rs_getsides"] = function (block, generator) {
+  // Generate the function call for this block.
+  const code = `redstone.getSides()`;
+  return [code, Order.NONE];
+}
+
+forBlock["rs_setoutput"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  const value = generator.valueToCode(block, "VALUE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `redstone.setOutput(${side},${value})\n`;
+  return code;
+}
+
+forBlock["rs_getoutput"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `redstone.getOutput(${side})`;
+  return [code, Order.NONE];
+}
+
+forBlock["rs_getinput"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `redstone.getInput(${side})`;
+  return [code, Order.NONE];
+}
+
+forBlock["rs_setanalogoutput"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  const value = generator.valueToCode(block, "VALUE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `redstone.setAnalogOutput(${side},${value})\n`;
+  return code;
+}
+
+forBlock["rs_getanalogoutput"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `redstone.getAnalogOutput(${side})`;
+  return [code, Order.NONE];
+}
+
+forBlock["rs_getanaloginput"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `redstone.getAnalogInput(${side})`;
+  return [code, Order.NONE];
+}
+
+
+
+// Rednet
+
+forBlock["rn_chbroadcast"] = function (block, generator) {
+  const channel = generator.valueToCode(block, "CHANNEL", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.CHANNEL_BROADCAST = ${channel}`;
+  return code;
+}
+
+forBlock["rn_getchbroadcast"] = function (block, generator) {
+  // Generate the function call for this block.
+  const code = `rednet.CHANNEL_BROADCAST`;
+  return [code, Order.NONE];
+}
+
+forBlock["rn_chrepeat"] = function (block, generator) {
+  const channel = generator.valueToCode(block, "CHANNEL", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.CHANNEL_REPEAT = ${channel}`;
+  return code;
+}
+
+forBlock["rn_getchrepeat"] = function (block, generator) {
+  // Generate the function call for this block.
+  const code = `rednet.CHANNEL_REPEAT`;
+  return [code, Order.NONE];
+}
+
+forBlock["rn_chmaxid"] = function (block, generator) {
+  const channel = generator.valueToCode(block, "CHANNEL", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.CHANNEL_MAXID = ${channel}`;
+  return code;
+}
+
+forBlock["rn_getchmaxid"] = function (block, generator) {
+  // Generate the function call for this block.
+  const code = `rednet.CHANNEL_MAXID`;
+  return [code, Order.NONE];
+}
+
+forBlock["rn_open"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.open(${side})`;
+  return [code, Order.NONE];
+}
+
+forBlock["rn_close"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.close(${side})`;
+  return code;
+}
+
+forBlock["rn_isopen"] = function (block, generator) {
+  const side = generator.valueToCode(block, "SIDE", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.isOpen(${side})`;
+  return [code, Order.NONE];
+}
+
+forBlock["rn_send"] = function (block, generator) {
+  const id = generator.valueToCode(block, "ID", Order.NONE) || "''";
+  const message = generator.valueToCode(block, "MESSAGE", Order.NONE) || "''";
+  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.send(${id},${message},${protocol})\n`;
+  return code;
+}
+
+forBlock["rn_broadcast"] = function (block, generator) {
+  const message = generator.valueToCode(block, "MESSAGE", Order.NONE) || "''";
+  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.broadcast(${message},${protocol})\n`;
+  return code;
+}
+
+forBlock["rn_receive"] = function (block, generator) {
+  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
+  const timeout = generator.valueToCode(block, "TIMEOUT", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.receive(${protocol},${timeout})`;
+  return [code, Order.NONE];
+}
+
+forBlock["rn_host"] = function (block, generator) {
+  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
+  const hostname = generator.valueToCode(block, "HOSTNAME", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.host(${protocol},${hostname})`;
+  return code;
+}
+
+forBlock["rn_unhost"] = function (block, generator) {
+  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.unhost(${protocol})`;
+  return code;
+}
+
+forBlock["rn_lookup"] = function (block, generator) {
+  const protocol = generator.valueToCode(block, "FILTER", Order.NONE) || "''";
+  const hostname = generator.valueToCode(block, "HOSTNAME", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `rednet.lookup(${protocol},${hostname})`;
+  return [code, Order.NONE];
+}

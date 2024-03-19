@@ -1175,6 +1175,276 @@ export const toolbox = {
     },
 
     {
+      kind: "category",
+      name: "CC: Redstone",
+      categorystyle: "text_category",
+      contents: [
+        {
+          kind: "block",
+          type: "rs_getsides",
+        },
+        {
+          kind: "block",
+          type: "rs_setoutput",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rs_getoutput",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rs_getinput",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rs_setanalogoutput",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rs_getanalogoutput",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rs_getanaloginput",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+      ]
+    },
+    {
+      kind: "category",
+      name: "CC: Rednet",
+      categorystyle: "text_category",
+      contents: [
+        {
+          kind: "block",
+          type: "rn_chbroadcast",
+          inputs: {
+            CHANNEL: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 65535,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rn_getchbroadcast",
+        },
+        {
+          kind: "block",
+          type: "rn_chrepeat",
+          inputs: {
+            CHANNEL: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 65533,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rn_getchrepeat",
+        },
+        {
+          kind: "block",
+          type: "rn_chmaxid",
+          inputs: {
+            CHANNEL: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 65500,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rn_getchmaxid",
+        },
+        {
+          kind: "block",
+          type: "rn_open",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rn_close",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rn_isopen",
+          inputs: {
+            SIDE: {
+              shadow: {
+                type: "side",
+                fields: {
+                  SIDE: "top",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "rn_send",
+          inputs: {
+            MESSAGE: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "message",
+                },
+              },
+            },
+            ID: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 0,
+                },
+              },
+            },
+          }
+        },
+        {
+          kind: "block",
+          type: "rn_broadcast",
+          inputs: {
+            MESSAGE: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "message",
+                },
+              },
+            },
+          }
+        },
+        {
+          kind: "block",
+          type: "rn_receive",
+          inputs: {
+            TIMEOUT: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 5,
+                },
+              },
+            },
+          }
+        },
+        {
+          kind: "block",
+          type: "rn_host",
+        },
+        {
+          kind: "block",
+          type: "rn_unhost",
+        },
+        {
+          kind: "block",
+          type: "rn_lookup",
+          inputs: {
+            FILTER: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "host",
+                },
+              },
+            },
+          }
+        },
+      ]
+    },
+    {
       kind: "sep",
     },
     {

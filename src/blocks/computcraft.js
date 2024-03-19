@@ -1569,6 +1569,393 @@ const per_find = {
   output: "String",
 };
 
+//Redstone
+
+const rs_getsides = {
+  type: "rs_getsides",
+  message0: "Get computer sides",
+  colour: 100,
+  tooltip: "Get all sides of the computer",
+  helpUrl: "",
+  output: "Array",
+};
+
+const rs_setoutput = {
+  type: "rs_setoutput",
+  message0: "Set signal on side %1 to %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "VALUE",
+      check: "Boolean",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  inputsInline: true,
+  colour: 100,
+  tooltip: "Set the output on a side between on and off",
+  helpUrl: "",
+};
+
+const rs_getoutput = {
+  type: "rs_getoutput",
+  message0: "Get output signal on side %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+  ],
+  colour: 100,
+  tooltip: "Get the output on a side",
+  helpUrl: "",
+  output: "Boolean",
+};
+
+const rs_getinput = {
+  type: "rs_getinput",
+  message0: "Get input signal on side %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+  ],
+  colour: 100,
+  tooltip: "Get the input on a side",
+  helpUrl: "",
+  output: "Boolean",
+};
+
+const rs_setanalogoutput = {
+  type: "rs_setanalogoutput",
+  message0: "Set analog signal on side %1 to %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "VALUE",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  inputsInline: true,
+  colour: 100,
+  tooltip: "Set the analog output on a side to a value between 0 and 15",
+  helpUrl: "",
+};
+
+const rs_getanalogoutput = {
+  type: "rs_getanalogoutput",
+  message0: "Get analog output signal on side %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+  ],
+  colour: 100,
+  tooltip: "Get the analog output on a side",
+  helpUrl: "",
+  output: "Number",
+};
+
+const rs_getanaloginput = {
+  type: "rs_getanaloginput",
+  message0: "Get analog input signal on side %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+  ],
+  colour: 100,
+  tooltip: "Get the analog input on a side",
+  helpUrl: "",
+  output: "Number",
+};
+
+
+// NEED TO DO BUNDLE
+
+
+// Rednet
+
+const rn_chbroadcast = {
+  type: "rn_chbroadcast",
+  message0: "Change broadcast channel to %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "CHANNEL",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Set the channel used by the Rednet API to broadcast messages.",
+  helpUrl: "",
+};
+
+const rn_getchbroadcast = {
+  type: "rn_getchbroadcast",
+  message0: "Get broadcast channel",
+  colour: 100,
+  tooltip: "Get the channel used by the Rednet API to broadcast messages.",
+  helpUrl: "",
+  output: "Number",
+};
+
+const rn_chrepeat = {
+  type: "rn_chrepeat",
+  message0: "Change repeat channel to %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "CHANNEL",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Set the channel used by the Rednet API to repeat messages.",
+  helpUrl: "",
+};
+
+const rn_getchrepeat = {
+  type: "rn_getchrepeat",
+  message0: "Get repeat channel",
+  colour: 100,
+  tooltip: "Get the channel used by the Rednet API to repeat messages.",
+  helpUrl: "",
+  output: "Number",
+};
+
+const rn_chmaxid = {
+  type: "rn_chmaxid",
+  message0: "Change max id to %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "CHANNEL",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Set the number of channels rednet reserves for computer IDs.",
+  helpUrl: "",
+};
+
+const rn_getchmaxid = {
+  type: "rn_getchmaxid",
+  message0: "Get max id",
+  colour: 100,
+  tooltip: "Get the number of channels rednet reserves for computer IDs.",
+  helpUrl: "",
+  output: "Number",
+};
+
+const rn_open = {
+  type: "rn_open",
+  message0: "Open %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Open a rednet modem",
+  helpUrl: "",
+};
+
+const rn_close = {
+  type: "rn_close",
+  message0: "Close %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Close a rednet modem",
+  helpUrl: "",
+};
+
+const rn_isopen = {
+  type: "rn_isopen",
+  message0: "Is %1 open?",
+  args0: [
+    {
+      type: "input_value",
+      name: "SIDE",
+      check: "String",
+    },
+  ],
+  colour: 100,
+  tooltip: "Check whether a rednet modem is open",
+  helpUrl: "",
+  output: "Boolean",
+};
+
+const rn_send = {
+  type: "rn_send",
+  message0: "Send %1 to %2 with protocol %3 (optional)",
+  args0: [
+    {
+      type: "input_value",
+      name: "MESSAGE",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "ID",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "FILTER",
+      check: "String",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Send a message to a computer with a specific id",
+  helpUrl: "",
+};
+
+const rn_broadcast = {
+  type: "rn_broadcast",
+  message0: "Broadcast %1 with protocol %2 (optional)",
+  args0: [
+    {
+      type: "input_value",
+      name: "MESSAGE",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "FILTER",
+      check: "String",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Broadcast a message to all computers on the same channel",
+  helpUrl: "",
+};
+
+const rn_receive = {
+  type: "rn_receive",
+  message0: "Receive with timeout %1 and protocol filter %2 (optional)",
+  args0: [
+    {
+      type: "input_value",
+      name: "TIMEOUT",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "FILTER",
+      check: "String",
+    },
+  ],
+  colour: 100,
+  tooltip: "Receive a message from the rednet",
+  helpUrl: "",
+  output: "Array",
+};
+
+const rn_host = {
+  type: "rn_host",
+  message0: "Host %1 with protocol %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "ID",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "FILTER",
+      check: "String",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Register a computer as a host for a specific protocol",
+  helpUrl: "",
+};
+
+const rn_unhost = {
+  type: "rn_unhost",
+  message0: "Unhost %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "FILTER",
+      check: "String",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Unregister a computer as a host for a specific protocol",
+  helpUrl: "",
+};
+
+const rn_lookup = {
+  type: "rn_lookup",
+  message0: "Lookup %1 with hostname %2 (optional)",
+  args0: [
+    {
+      type: "input_value",
+      name: "FILTER",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "HOSTNAME",
+      check: "String",
+    },
+  ],
+  colour: 100,
+  tooltip: "Get the ID of a computer hosting a specific protocol",
+  helpUrl: "",
+  output: "Number",
+};
+
+
+
 // Create the block definitions for the JSON-only blocks.
 // This does not register their definitions with Blockly.
 // This file has no side effects!
@@ -1582,6 +1969,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   read_replace,
   tonumber,
   tostring,
+
   fs_open,
   fs_close,
   fs_read,
@@ -1608,6 +1996,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   fs_isdriveroot,
   shell_resolve,
   fs_combine,
+
   turtle_attack,
   turtle_build,
   turtle_compare,
@@ -1629,6 +2018,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   turtle_select,
   turtle_suck,
   turtle_transferto,
+
   get_arg,
   get_arg_amount,
   args,
@@ -1666,4 +2056,28 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   per_call,
   per_wrap,
   per_find,
+
+  rs_getsides,
+  rs_setoutput,
+  rs_getoutput,
+  rs_getinput,
+  rs_setanalogoutput,
+  rs_getanalogoutput,
+  rs_getanaloginput,
+
+  rn_chbroadcast,
+  rn_getchbroadcast,
+  rn_chrepeat,
+  rn_getchrepeat,
+  rn_chmaxid,
+  rn_getchmaxid,
+  rn_open,
+  rn_close,
+  rn_isopen,
+  rn_send,
+  rn_broadcast,
+  rn_receive,
+  rn_host,
+  rn_unhost,
+  rn_lookup,
 ]);
