@@ -42,6 +42,53 @@ const table_field = {
   helpUrl: "",
 };
 
+const table_get = {
+  type: "table_get",
+  message0: "Get %1 from table %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "KEY",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "TABLE",
+      check: "table",
+    },
+  ],
+  colour: 100,
+  tooltip: "Get a value from a table",
+  helpUrl: "",
+  output: null,
+};
+
+const table_set = {
+  type: "table_set",
+  message0: "Set %1 in table %2 to %3",
+  args0: [
+    {
+      type: "input_value",
+      name: "KEY",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "TABLE",
+      check: "table",
+    },
+    {
+      type: "input_value",
+      name: "VALUE",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 100,
+  tooltip: "Set a value in a table",
+  helpUrl: "",
+};
+
 const sleep = {
   type: "sleep",
   message0: "Wait %1 seconds",
@@ -2019,6 +2066,8 @@ const rn_lookup = {
 export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   table,
   table_field,
+  table_get,
+  table_set,
 
 
   sleep,

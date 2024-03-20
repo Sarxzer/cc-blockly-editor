@@ -4,11 +4,14 @@ import { forBlock } from "./generators/lua";
 import { luaGenerator } from "blockly/lua";
 import { save, load } from "./serialization";
 import { toolbox } from "./toolbox";
+import Prism from "prismjs";
+import "./prismjs/prism-lua.js";
+import "./prismjs/prism-dark.css";
 import "./index.css";
-import "./prism";
-import "./prism.css";
 
 import {shadowBlockConversionChangeListener} from '@blockly/shadow-block-converter';
+
+Prism.highlightAll();
 
 const secret = require('./secret.json');
 
@@ -21,15 +24,20 @@ Blockly.common.defineBlocks(blocks);
 Object.assign(luaGenerator.forBlock, forBlock);
 
 const codeDiv = document.getElementById("generatedCode").firstChild;
-const outputDiv = document.getElementById("output");
 const blocklyDiv = document.getElementById("blocklyDiv");
 const ws = Blockly.inject(blocklyDiv, { toolbox });
 
 ws.addChangeListener(shadowBlockConversionChangeListener);
 
+function htmlDecode(input){
+  var doc = new DOMParser().parseFromString(input, "text/html");
+  return doc.documentElement.textContent;
+}
+
 const runCode = () => {
-  const code = luaGenerator.workspaceToCode(ws);
-  codeDiv.innerText = code;
+  const code = luaGenerator.workspaceToCode(ws).replace(/<br>/g, '\n');
+  codeDiv.textContent = htmlDecode(code);
+  Prism.highlightElement(codeDiv);
 };
 
 runCode();
@@ -46,9 +54,15 @@ ws.addChangeListener((e) => {
   runCode();
 });
 
+const copyButton = document.getElementById('copyButton');
 const fileName = document.getElementById('fileName');
 const downloadButton = document.getElementById('downloadButton');
 const loadButton = document.getElementById('loadButton');
+
+const copyCode = () => {
+  const code = luaGenerator.workspaceToCode(ws);
+  navigator.clipboard.writeText(code);
+};
 
 const downloadWorkspace = () => {
   const json = {
@@ -173,6 +187,7 @@ const loadWorkspace = () => {
 //}
 
 
+copyButton.onclick = copyCode;
 downloadButton.onclick = downloadWorkspace;
 downloadLuaButton.onclick = downloadLua;
 loadButton.onclick = loadWorkspace;

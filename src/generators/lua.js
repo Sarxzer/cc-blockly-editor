@@ -29,6 +29,21 @@ forBlock["table_field"] = function (block, generator) {
   return code;
 };
 
+forBlock["table_get"] = function (block, generator) {
+  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "''";
+  const key = generator.valueToCode(block, "KEY", Order.NONE) || "''";
+  const code = `${table}[${key}]`;
+  return [code, Order.NONE];
+};
+
+forBlock["table_set"] = function (block, generator) {
+  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "''";
+  const key = generator.valueToCode(block, "KEY", Order.NONE) || "''";
+  const value = generator.valueToCode(block, "VALUE", Order.NONE) || "''";
+  const code = `${table}[${key}]=${value}\n`;
+  return code;
+};
+
 forBlock["sleep"] = function (block, generator) {
   const time = generator.valueToCode(block, "SEC", Order.NONE) || "''";
   // Generate the function call for this block.

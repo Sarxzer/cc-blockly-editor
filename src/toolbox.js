@@ -608,6 +608,14 @@ export const toolbox = {
           kind: "block",
           type: "table_field",
         },
+        {
+          kind: "block",
+          type: "table_get",
+        },
+        {
+          kind: "block",
+          type: "table_set",
+        },
       ],
     },
     {

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@blockly/shadow-block-converter": "^5.0.1",
-    "blockly": "^10.0.0"
+    "blockly": "^10.0.0",
+    "prismjs": "^1.29.0"
   }
 }
