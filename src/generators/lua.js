@@ -386,14 +386,14 @@ forBlock["get_arg_amount"] = function (block, generator) {
 forBlock["disk_ispresent"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.isPresent("${drive}")`;
+  const code = `disk.isPresent(${drive})`;
   return [code, Order.NONE];
 };
 
 forBlock["disk_getlabel"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.getLabel("${drive}")`;
+  const code = `disk.getLabel(${drive})`;
   return [code, Order.NONE];
 };
 
@@ -401,63 +401,63 @@ forBlock["disk_setlabel"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   const label = generator.valueToCode(block, "LABEL", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.setLabel("${drive}",${label})\n`;
+  const code = `disk.setLabel(${drive},${label})\n`;
   return code;
 };
 
 forBlock["disk_hasdata"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.hasData("${drive}")`;
+  const code = `disk.hasData(${drive})`;
   return [code, Order.NONE];
 };
 
 forBlock["disk_getmountpath"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.getMountPath("${drive}")`;
+  const code = `disk.getMountPath(${drive})`;
   return [code, Order.NONE];
 };
 
 forBlock["disk_hasaudio"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.hasAudio("${drive}")`;
+  const code = `disk.hasAudio(${drive})`;
   return [code, Order.NONE];
 };
 
 forBlock["disk_getaudiotitle"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.getAudioTitle("${drive}")`;
+  const code = `disk.getAudioTitle(${drive})`;
   return [code, Order.NONE];
 };
 
 forBlock["disk_playaudio"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.playAudio("${drive}")\n`;
+  const code = `disk.playAudio(${drive})\n`;
   return code;
 };
 
 forBlock["disk_stopaudio"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.stopAudio("${drive}")\n`;
+  const code = `disk.stopAudio(${drive})\n`;
   return code;
 };
 
 forBlock["disk_eject"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.eject("${drive}")\n`;
+  const code = `disk.eject(${drive})\n`;
   return code;
 };
 
 forBlock["disk_getid"] = function (block, generator) {
   const drive = generator.valueToCode(block, "DRIVE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `disk.getID("${drive}")`;
+  const code = `disk.getID(${drive})`;
   return [code, Order.NONE];
 };
 

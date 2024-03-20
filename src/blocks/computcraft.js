@@ -342,6 +342,10 @@ const fs_seek = {
       ],
     },
   ],
+  previousStatement: null,
+  nextStatement: null,
+  tooltip: "Move the file pointer",
+  helpUrl: "",
 };
 const fs_seek_pos = {
   colour: 50,
