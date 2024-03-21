@@ -1,5 +1,22 @@
 # Release Notes
 
+## Version 1.1.7 Update
+
+We're excited to announce the release of version 1.1.7 of the ComputerCraft : Blockly Editor. This update introduces new table blocks, improved syntax highlighting, and several bug fixes and enhancements.
+
+### New Features
+- **Table Blocks**: We've added brand new blocks for creating and editing tables. These blocks provide a more intuitive way to work with tables in your Lua scripts.
+- **Syntax Highlighting**: We've repaired the syntax highlighting for Lua code by adding a custom Lua syntax highlighter. This improvement makes your code easier to read and understand.
+- **Copy Button**: The copy button, which was previously removed for unknown reasons, has been re-implemented. This feature allows you to easily copy your Lua code to the clipboard.
+
+### Changes
+- **Color Scheme**: We've updated the color scheme for categories and blocks in `computcraft.js`, `index.js`, and `toolbox.js` for better readability. This change makes it easier to distinguish between different types of blocks and categories.
+- **Block Corrections**: We've corrected a number of blocks, including the tooltips for redstone blocks, blocks with optional inputs, and some of the rednet and http blocks. These corrections improve the accuracy and usability of these blocks.
+
+**Full Changelog**: https://github.com/Sarxzer/cc-blockly-editor/compare/v1.1.6...v1.1.7
+
+---
+
 ## Version 1.1.6 Update
 
 We're thrilled to announce the release of version 1.1.6 of the ComputerCraft : Blockly Editor. This update introduces a comprehensive set of Redstone and Rednet blocks, expanding the capabilities of your Lua scripts.
