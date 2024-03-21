@@ -12,7 +12,7 @@ Blockly is a Google libraries that add visual programation for educational or be
 
 ## Installation
 
-No installation is required. Just open the application in your browser and start coding.
+No installation is required. Just go on the [website](https://sarxzer.xyz/projects/cc-blockly-editor) and start coding. You can also download the files for offline usage.
 
 ### For offline usage
 #### Html file
