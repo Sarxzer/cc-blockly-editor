@@ -13,6 +13,7 @@ const table = {
     {
       type: "input_statement",
       name: "FIELDS",
+      check: "table_field",
     },
   ],
   colour: "#943794",
@@ -35,8 +36,8 @@ const table_field = {
       name: "VALUE",
     },
   ],
-  previousStatement: "table_field",
-  nextStatement: "table_field",
+  previousStatement: ["table_field", "table"],
+  nextStatement: ["table_field", "table"],
   colour: "#943794",
   tooltip: "Add a field to a table",
   helpUrl: "",

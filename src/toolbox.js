@@ -610,6 +610,31 @@ export const toolbox = {
         {
           kind: "block",
           type: "table",
+          inputs: {
+            FIELDS: {
+              block: {
+                type: "table_field",
+                inputs: {
+                  KEY: {
+                    shadow: {
+                      type: "text",
+                      fields: {
+                        TEXT: "key",
+                      },
+                    },
+                  },
+                  VALUE: {
+                    shadow: {
+                      type: "text",
+                      fields: {
+                        TEXT: "value",
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
         {
           kind: "block",
