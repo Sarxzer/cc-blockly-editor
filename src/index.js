@@ -8,6 +8,7 @@ import Prism from "prismjs";
 import "./prismjs/prism-lua.js";
 import "./prismjs/prism-dark.css";
 import "./index.css";
+import "./toolbox_style.css";
 
 import {shadowBlockConversionChangeListener} from '@blockly/shadow-block-converter';
 
@@ -53,6 +54,59 @@ ws.addChangeListener((e) => {
   }
   runCode();
 });
+
+
+// Theme
+
+const theme = Blockly.Theme.defineTheme('computcraft', {
+  'base': Blockly.Themes.Classic,
+  'categoryStyles': {
+    'table_category': {
+      'colour': '#943794',
+    },
+    'redstone_category': {
+      'colour': '#B01113',
+    },
+    'rednet_category': {
+      'colour': '#C15100',
+    },
+    'turtle_category': {
+      'colour': '#00B400',
+    },
+    'peripheral_category': {
+      'colour': '#BCA400',
+    },
+    'disk_category': {
+      'colour': '#276359',
+    },
+    'filesystem_category': {
+      'colour': '#005C9A',
+    },
+    'base_category': {
+      'colour': '#CFCA77',
+    },
+    'http_category': {
+      'colour': '#008B8B',
+    },
+  },
+
+  'blockStyles': {
+    'table_category': {
+      'colourPrimary': '#943794',
+      'colourSecondary': '#7B2CBF',
+      'colourTertiary': '#5C007A',
+    },
+    'computcraft_block': {
+      'colourPrimary': '#4C97FF',
+      'colourSecondary': '#3373CC',
+      'colourTertiary': '#2E5BAE',
+    },
+  },
+});
+
+
+ws.setTheme(theme);
+
 
 const copyButton = document.getElementById('copyButton');
 const fileName = document.getElementById('fileName');

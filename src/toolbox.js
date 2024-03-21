@@ -15,9 +15,13 @@ export const toolbox = {
   kind: "categoryToolbox",
   contents: [
     {
+      kind: "customCategory",
+      name: "Custom Blocks",
+    },
+    {
       kind: "category",
       name: "Logic",
-      categorystyle: "logic_category",
+      colour: "#5C81A6",
       contents: [
         {
           kind: "block",
@@ -593,13 +597,16 @@ export const toolbox = {
           kind: "block",
           type: "lists_reverse",
         },
-        {
-          kind: "block",
-          type: "list_getkey",
-        },
         { kind: "block",
           type: "shallow_copy"
         },
+      ],
+    },
+    {
+      kind: "category",
+      name: "Tables",
+      categorystyle: "table_category",
+      contents: [
         {
           kind: "block",
           type: "table",
@@ -616,6 +623,22 @@ export const toolbox = {
           kind: "block",
           type: "table_set",
         },
+        {
+          kind:"block",
+          type:"table_remove"
+        },
+        {
+          kind: "block",
+          type: "table_keys",
+        },
+        {
+          kind: "block",
+          type: "table_values",
+        },
+        {
+          kind: "block",
+          type: "table_length",
+        }
       ],
     },
     {
@@ -624,7 +647,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "CC: Base",
-      categorystyle: "text_category",
+      categorystyle: "base_category",
       contents: [
         {
           kind: "block",
@@ -712,21 +735,21 @@ export const toolbox = {
         },
       ],
     },
-    {
-      kind: "category",
-      name: "CC: Shell + OS",
-      categorystyle: "text_category",
-      contents: [
-        {
-          kind: "block",
-          type: "shell_resolve",
-        },
-      ],
-    },
+    //{
+    //  kind: "category",
+    //  name: "CC: Shell + OS",
+    //  categorystyle: "computcraft_category",
+    //  contents: [
+    //    {
+    //      kind: "block",
+    //      type: "shell_resolve",
+    //    },
+    //  ],
+    //},
     {
       kind: "category",
       name: "CC: Turtle",
-      categorystyle: "text_category",
+      categorystyle: "turtle_category",
       contents: [
         {
           kind: "block",
@@ -766,8 +789,8 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "CC: fs",
-      categorystyle: "text_category",
+      name: "CC: Filesystem",
+      categorystyle: "filesystem_category",
       contents: [
         {
           kind: "block",
@@ -826,7 +849,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "CC: Disk",
-      categorystyle: "text_category",
+      categorystyle: "disk_category",
       contents: [
         {
           kind: "block",
@@ -996,7 +1019,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "CC: HTTP",
-      categorystyle: "text_category",
+      categorystyle: "http_category",
       contents: [
         {
           kind: "block",
@@ -1104,7 +1127,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "CC: Peripherals",
-      categorystyle: "text_category",
+      categorystyle: "peripheral_category",
       contents: [
         {
           kind: "block",
@@ -1194,7 +1217,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "CC: Redstone",
-      categorystyle: "text_category",
+      categorystyle: "redstone_category",
       contents: [
         {
           kind: "block",
@@ -1289,7 +1312,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "CC: Rednet",
-      categorystyle: "text_category",
+      categorystyle: "rednet_category",
       contents: [
         {
           kind: "block",

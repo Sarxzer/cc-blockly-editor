@@ -30,18 +30,65 @@ forBlock["table_field"] = function (block, generator) {
 };
 
 forBlock["table_get"] = function (block, generator) {
-  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "''";
+  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "{}";
   const key = generator.valueToCode(block, "KEY", Order.NONE) || "''";
   const code = `${table}[${key}]`;
   return [code, Order.NONE];
 };
 
 forBlock["table_set"] = function (block, generator) {
-  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "''";
+  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "{}";
   const key = generator.valueToCode(block, "KEY", Order.NONE) || "''";
   const value = generator.valueToCode(block, "VALUE", Order.NONE) || "''";
   const code = `${table}[${key}]=${value}\n`;
   return code;
+};
+
+forBlock["table_remove"] = function (block, generator) {
+  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "{}";
+  const key = generator.valueToCode(block, "KEY", Order.NONE) || "''";
+  const code = `table.remove(${table},${key})\n`;
+  return code;
+};
+
+forBlock["table_keys"] = function (block, generator) {
+  const getKey = generator.provideFunction_(
+    "table.keys",
+    `function ${generator.FUNCTION_NAME_PLACEHOLDER_}(t)
+    local keys={}
+    for key,_ in pairs(t) do
+      table.insert(keys, key)
+    end
+    return keys
+  end
+`
+  );
+  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "{}";
+  const code = `${getKey}(${table})`;
+  return [code, Order.NONE];
+};
+
+forBlock["table_values"] = function (block, generator) {
+  const getValues = generator.provideFunction_(
+    "table.values",
+    `function ${generator.FUNCTION_NAME_PLACEHOLDER_}(t)
+    local values={}
+    for _,value in pairs(t) do
+      table.insert(values, value)
+    end
+    return values
+  end
+`
+  );
+  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "{}";
+  const code = `${getValues}(${table})`;
+  return [code, Order.NONE];
+};
+
+forBlock["table_length"] = function (block, generator) {
+  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "{}";
+  const code = `#${table}`;
+  return [code, Order.NONE];
 };
 
 forBlock["sleep"] = function (block, generator) {
@@ -254,13 +301,6 @@ forBlock["fs_combine"] = function (block, generator) {
   const files = generator.valueToCode(block, "PATHS", Order.NONE) || "''";
   // Generate the function call for this block.
   const code = `fs.combine(unpack(${files}))`;
-  return [code, Order.NONE];
-};
-forBlock["list_getkey"] = function (block, generator) {
-  const table = generator.valueToCode(block, "TABLE", Order.NONE) || "{}";
-  const key = generator.valueToCode(block, "KEY", Order.NONE) || "''";
-  // Generate the function call for this block.
-  const code = `${table}[${key}]`;
   return [code, Order.NONE];
 };
 forBlock["turtle_move"] = function (block, generator) {

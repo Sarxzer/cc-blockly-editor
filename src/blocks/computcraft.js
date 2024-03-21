@@ -15,7 +15,7 @@ const table = {
       name: "FIELDS",
     },
   ],
-  colour: 100,
+  colour: "#943794",
   tooltip: "Create a table",
   helpUrl: "",
   output: "table",
@@ -23,7 +23,7 @@ const table = {
 
 const table_field = {
   type: "table_field",
-  message0: "Field %1 %2",
+  message0: "Add field key %1 to value %2",
   args0: [
     {
       type: "input_value",
@@ -37,14 +37,14 @@ const table_field = {
   ],
   previousStatement: "table_field",
   nextStatement: "table_field",
-  colour: 100,
+  colour: "#943794",
   tooltip: "Add a field to a table",
   helpUrl: "",
 };
 
 const table_get = {
   type: "table_get",
-  message0: "Get %1 from table %2",
+  message0: "Get key %1 from table %2",
   args0: [
     {
       type: "input_value",
@@ -57,7 +57,7 @@ const table_get = {
       check: "table",
     },
   ],
-  colour: 100,
+  colour: "#943794",
   tooltip: "Get a value from a table",
   helpUrl: "",
   output: null,
@@ -65,7 +65,7 @@ const table_get = {
 
 const table_set = {
   type: "table_set",
-  message0: "Set %1 in table %2 to %3",
+  message0: "Set key %1 in table %2 to %3",
   args0: [
     {
       type: "input_value",
@@ -84,9 +84,79 @@ const table_set = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#943794",
   tooltip: "Set a value in a table",
   helpUrl: "",
+};
+
+const table_remove = {
+  type: "table_remove",
+  message0: "Remove key %1 from table %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "KEY",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "TABLE",
+      check: "table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#943794",
+  tooltip: "Remove a value from a table",
+  helpUrl: "",
+};
+
+const table_keys = {
+  type: "table_keys",
+  message0: "Keys of table %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "TABLE",
+      check: "table",
+    },
+  ],
+  colour: "#943794",
+  tooltip: "Get all keys of a table",
+  helpUrl: "",
+  output: "Array",
+};
+
+const table_values = {
+  type: "table_values",
+  message0: "Values of table %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "TABLE",
+      check: "table",
+    },
+  ],
+  colour: "#943794",
+  tooltip: "Get all values of a table",
+  helpUrl: "",
+  output: "Array",
+};
+
+const table_length = {
+  type: "table_length",
+  message0: "Length of table %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "TABLE",
+      check: "table",
+    },
+  ],
+  colour: "#943794",
+  tooltip: "Get length of a table",
+  helpUrl: "",
+  output: "Number",
 };
 
 const sleep = {
@@ -101,7 +171,7 @@ const sleep = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Wait for some time",
   helpUrl: "",
 };
@@ -117,7 +187,7 @@ const print = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Write text with newline",
   helpUrl: "",
 };
@@ -133,7 +203,7 @@ const printerror = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 0,
+  colour: "#A1A15D",
   tooltip: "Log an error",
   helpUrl: "",
 };
@@ -149,14 +219,14 @@ const write = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Write text without newline",
   helpUrl: "",
 };
 const read = {
   type: "read",
   message0: "Read",
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Read from console",
   helpUrl: "",
   output: "String",
@@ -170,7 +240,7 @@ const read_completion = {
       check: "Array",
     },
   ],
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Read from console",
   helpUrl: "",
   output: "String",
@@ -184,7 +254,7 @@ const tonumber = {
       name: "OBJ",
     },
   ],
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Convert any object to a number",
   helpUrl: "",
   output: "Number",
@@ -198,7 +268,7 @@ const tostring = {
       name: "OBJ",
     },
   ],
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Convert any object to string",
   helpUrl: "",
   output: "String",
@@ -213,11 +283,15 @@ const read_replace = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Read from console and replace input with a character",
   helpUrl: "",
   output: "String",
 };
+
+
+// Filesystem
+
 
 const fs_open = {
   type: "fs_open",
@@ -245,7 +319,7 @@ const fs_open = {
       name: "NAME",
     },
   ],
-  colour: 50,
+  colour: "#185C9A",
   tooltip: "Open a file",
   helpUrl: "",
   output: "FileHandle",
@@ -262,7 +336,7 @@ const fs_close = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 50,
+  colour: "#005C9A",
   tooltip: "Close a file",
   helpUrl: "",
 };
@@ -282,7 +356,7 @@ const fs_read = {
     },
   ],
   inputsInline: true,
-  colour: 50,
+  colour: "#185C9A",
   tooltip: "Read bytes from file",
   helpUrl: "",
   output: "String",
@@ -297,7 +371,7 @@ const fs_readall = {
       check: "FileHandle",
     },
   ],
-  colour: 50,
+  colour: "#185C9A",
   tooltip: "Read all remaining contents from file",
   helpUrl: "",
   output: "String",
@@ -312,13 +386,13 @@ const fs_readline = {
       check: "FileHandle",
     },
   ],
-  colour: 50,
+  colour: "#185C9A",
   tooltip: "Read a line from file",
   helpUrl: "",
   output: "String",
 };
 const fs_seek = {
-  colour: 50,
+  colour: "#005C9A",
   type: "fs_seek",
   message0: "Offset pointer in file %1 by %2, relative to the %3",
   args0: [
@@ -348,7 +422,7 @@ const fs_seek = {
   helpUrl: "",
 };
 const fs_seek_pos = {
-  colour: 50,
+  colour: "#185C9A",
   type: "fs_seek_pos",
   message0: "Pointer position in file %1",
   args0: [
@@ -370,7 +444,7 @@ const fs_getsize = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Get the size of a file",
   helpUrl: "",
   output: "Number",
@@ -385,7 +459,7 @@ const fs_exists = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Checks whether the file exists",
   helpUrl: "",
   output: "Boolean",
@@ -400,7 +474,7 @@ const fs_isdir = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Checks whether the path is a directory",
   helpUrl: "",
   output: "Boolean",
@@ -415,7 +489,7 @@ const fs_isreadonly = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Checks whether the file can only be read",
   helpUrl: "",
   output: "Boolean",
@@ -432,7 +506,7 @@ const fs_makedir = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#005C9A",
   tooltip: "Create a directory",
   helpUrl: "",
 };
@@ -453,7 +527,7 @@ const fs_move = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#005C9A",
   tooltip: "Move file to a directory",
   helpUrl: "",
 };
@@ -469,7 +543,7 @@ const fs_delete = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#005C9A",
   tooltip: "Delete a file or directory",
   helpUrl: "",
 };
@@ -490,7 +564,7 @@ const fs_copy = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#005C9A",
   tooltip: "Copy file to another file",
   helpUrl: "",
 };
@@ -504,7 +578,7 @@ const fs_getdrive = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Checks which drive is file located on",
   helpUrl: "",
   output: "String",
@@ -519,7 +593,7 @@ const fs_getfreespace = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Returns free space on the drive this file is located on",
   helpUrl: "",
   output: "Number",
@@ -534,7 +608,7 @@ const fs_getcapacity = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Returns capacity of the drive this file is located on",
   helpUrl: "",
   output: "Number",
@@ -554,7 +628,7 @@ const fs_complete = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Returns list of filenames that can complete input",
   helpUrl: "",
   output: "Array",
@@ -569,7 +643,7 @@ const fs_find = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Find all files which can fit in the search string",
   helpUrl: "",
   output: "Array",
@@ -584,7 +658,7 @@ const fs_isdriveroot = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Checks whether the drive is file located on is root",
   helpUrl: "",
   output: "Boolean",
@@ -599,7 +673,7 @@ const fs_list = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Return all filepaths in a directory",
   helpUrl: "",
   output: "Array",
@@ -614,30 +688,10 @@ const fs_attributes = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Return all attributes of a file",
   helpUrl: "",
   output: "Array",
-};
-const list_getkey = {
-  type: "list_getkey",
-  message0: "Get key %2 of table %1",
-  args0: [
-    {
-      type: "input_value",
-      name: "TABLE",
-      check: "Array",
-    },
-    {
-      type: "input_value",
-      name: "KEY",
-      check: null,
-    },
-  ],
-  colour: 100,
-  tooltip: "Get element by key",
-  helpUrl: "",
-  output: null,
 };
 const fs_combine = {
   type: "fs_combine",
@@ -649,11 +703,15 @@ const fs_combine = {
       check: "Array",
     },
   ],
-  colour: 100,
+  colour: "#185C9A",
   tooltip: "Combine paths",
   helpUrl: "",
   output: null,
 };
+
+// Turtle
+
+
 const turtle_dig = {
   type: "turtle_dig",
   message0: "Dig %1",
@@ -1011,7 +1069,7 @@ const get_arg = {
   type: "get_arg",
   message0: "Get arg # %1",
   args0: [{ type: "input_value", check: "Number", name: "NUM" }],
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Get command line argument",
   helpUrl: "",
   output: null,
@@ -1028,7 +1086,7 @@ const shallow_copy = {
 const args = {
   type: "args",
   message0: "args",
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Argument table",
   helpUrl: "",
   output: "Array",
@@ -1036,7 +1094,7 @@ const args = {
 const get_arg_amount = {
   type: "get_arg_amount",
   message0: "Amount of arguments",
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Amount of command line arguments",
   helpUrl: "",
   output: "Number",
@@ -1134,7 +1192,7 @@ const disk_ispresent = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#004859",
   tooltip: "Checks whether any item at all is in the disk drive",
   helpUrl: "",
   output: "Boolean",
@@ -1150,7 +1208,7 @@ const disk_getlabel = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#004859",
   tooltip: "Get the label of the floppy disk, record, or other media within the given disk drive",
   helpUrl: "",
   output: "String",
@@ -1173,7 +1231,7 @@ const disk_setlabel = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#276359",
   tooltip: "Set the label of the floppy disk or other media",
   helpUrl: "",
 };
@@ -1188,7 +1246,7 @@ const disk_hasdata = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#004859",
   tooltip: "Check whether the current disk provides a mount",
   helpUrl: "",
   output: "Boolean",
@@ -1204,7 +1262,7 @@ const disk_getmountpath = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#004859",
   tooltip: "Find the directory name on the local computer where the contents of the current floppy disk (or other mount) can be found",
   helpUrl: "",
   output: "String",
@@ -1220,7 +1278,7 @@ const disk_hasaudio = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#004859",
   tooltip: "Whether the current disk is a music disk as opposed to a floppy disk or other item",
   helpUrl: "",
   output: "Boolean",
@@ -1236,7 +1294,7 @@ const disk_getaudiotitle = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#004859",
   tooltip: "Get the title of the audio track from the music record in the drive",
   helpUrl: "",
   output: "String",
@@ -1254,7 +1312,7 @@ const disk_playaudio = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#276359",
   tooltip: "Starts playing the music record in the drive",
   helpUrl: "",
 };
@@ -1271,7 +1329,7 @@ const disk_stopaudio = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#276359",
   tooltip: "Stops the music record in the drive from playing",
   helpUrl: "",
 };
@@ -1288,7 +1346,7 @@ const disk_eject = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#276359",
   tooltip: "Ejects any item currently in the drive, spilling it into the world as a loose item",
   helpUrl: "",
 };
@@ -1303,7 +1361,7 @@ const disk_getid = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#004859",
   tooltip: "Returns a number which uniquely identifies the disk in the drive",
   helpUrl: "",
   output: "String",
@@ -1327,7 +1385,7 @@ const side = {
 
     },
   ],
-  colour: 100,
+  colour: "#A1A15D",
   tooltip: "Side of the computer",
   helpUrl: "",
   output: "String",
@@ -1351,7 +1409,7 @@ const http_get = {
     },
   ],
   inputsInline: true,
-  colour: 100,
+  colour: "#008B8B",
   tooltip: "Make a HTTP GET request to the given url",
   helpUrl: "",
   output: "String",
@@ -1378,7 +1436,7 @@ const http_post = {
     },
   ],
   inputsInline: true,
-  colour: 100,
+  colour: "#008B8B",
   tooltip: "Make a HTTP POST request to the given url",
   helpUrl: "",
   output: "String",
@@ -1404,7 +1462,7 @@ const http_request = {
       check: "Array",
     },
   ],
-  colour: 100,
+  colour: "#008B8B",
   tooltip: "Asynchronously make a HTTP request to the given url",
   helpUrl: "",
   output: "String",
@@ -1425,7 +1483,7 @@ const http_checkurl = {
       checked: false,
     },
   ],
-  colour: 100,
+  colour: "#008B8B",
   tooltip: "Determine whether a URL can be requested",
   helpUrl: "",
   output: "Boolean",
@@ -1452,7 +1510,7 @@ const http_websocket = {
     },
   ],
   inputsInline: true,
-  colour: 100,
+  colour: "#598B8B",
   tooltip: "Open a websocket to the given url",
   helpUrl: "",
   output: "String",
@@ -1473,7 +1531,7 @@ const http_websocket_receive = {
       check: "Number",
     },
   ],
-  colour: 100,
+  colour: "#598B8B",
   tooltip: "Receive a message from the websocket",
   helpUrl: "",
   output: "String",
@@ -1496,7 +1554,7 @@ const http_websocket_send = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#598B8B",
   tooltip: "Send a message to the websocket",
   helpUrl: "",
 };
@@ -1513,7 +1571,7 @@ const http_websocket_close = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#598B8B",
   tooltip: "Close the websocket",
   helpUrl: "",
 };
@@ -1523,7 +1581,7 @@ const http_websocket_close = {
 const per_getnames = {
   type: "per_getnames",
   message0: "Get names of all peripherals",
-  colour: 100,
+  colour: "#BCA400",
   tooltip: "Get names of all peripherals",
   helpUrl: "",
   output: "Array",
@@ -1539,7 +1597,7 @@ const per_ispresent = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#BCA400",
   tooltip: "Check whether a peripheral is present",
   helpUrl: "",
   output: "Boolean",
@@ -1555,7 +1613,7 @@ const per_gettypes = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#BCA400",
   tooltip: "Get the type of a peripheral",
   helpUrl: "",
   output: "String",
@@ -1576,7 +1634,7 @@ const per_hastype = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#BCA400",
   tooltip: "Check whether a peripheral has a specific type",
   helpUrl: "",
   output: "Boolean",
@@ -1592,7 +1650,7 @@ const per_getmethods = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#BCA400",
   tooltip: "Get the methods of a peripheral",
   helpUrl: "",
   output: "Array",
@@ -1618,7 +1676,7 @@ const per_call = {
       check: "Array",
     },
   ],
-  colour: 100,
+  colour: "#BCA400",
   tooltip: "Call a method of a peripheral",
   helpUrl: "",
   output: null,
@@ -1634,7 +1692,7 @@ const per_wrap = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#BCA400",
   tooltip: "Wrap a peripheral",
   helpUrl: "",
   output: "Table",
@@ -1650,7 +1708,7 @@ const per_find = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#BCA400",
   tooltip: "Find a peripheral with a specific type",
   helpUrl: "",
   output: "String",
@@ -1661,7 +1719,7 @@ const per_find = {
 const rs_getsides = {
   type: "rs_getsides",
   message0: "Get computer sides",
-  colour: 100,
+  colour: "#B01113",
   tooltip: "Get all sides of the computer",
   helpUrl: "",
   output: "Array",
@@ -1685,7 +1743,7 @@ const rs_setoutput = {
   previousStatement: null,
   nextStatement: null,
   inputsInline: true,
-  colour: 100,
+  colour: "#C51113",
   tooltip: "Set the redstone output on a side between on and off",
   helpUrl: "",
 };
@@ -1700,7 +1758,7 @@ const rs_getoutput = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#B01113",
   tooltip: "Get the redstone output on a side",
   helpUrl: "",
   output: "Boolean",
@@ -1716,7 +1774,7 @@ const rs_getinput = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#B01113",
   tooltip: "Get the redstone input on a side",
   helpUrl: "",
   output: "Boolean",
@@ -1740,7 +1798,7 @@ const rs_setanalogoutput = {
   previousStatement: null,
   nextStatement: null,
   inputsInline: true,
-  colour: 100,
+  colour: "#C51113",
   tooltip: "Set the redstone analog output on a side to a value between 0 and 15",
   helpUrl: "",
 };
@@ -1755,7 +1813,7 @@ const rs_getanalogoutput = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#B01113",
   tooltip: "Get the analog output on a side",
   helpUrl: "",
   output: "Number",
@@ -1771,7 +1829,7 @@ const rs_getanaloginput = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#B01113",
   tooltip: "Get the redstone analog input on a side",
   helpUrl: "",
   output: "Number",
@@ -1795,7 +1853,7 @@ const rn_chbroadcast = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Set the channel used by the Rednet API to broadcast messages.",
   helpUrl: "",
 };
@@ -1803,7 +1861,7 @@ const rn_chbroadcast = {
 const rn_getchbroadcast = {
   type: "rn_getchbroadcast",
   message0: "Get broadcast channel",
-  colour: 100,
+  colour: "#9C5100",
   tooltip: "Get the channel used by the Rednet API to broadcast messages.",
   helpUrl: "",
   output: "Number",
@@ -1821,7 +1879,7 @@ const rn_chrepeat = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Set the channel used by the Rednet API to repeat messages.",
   helpUrl: "",
 };
@@ -1829,7 +1887,7 @@ const rn_chrepeat = {
 const rn_getchrepeat = {
   type: "rn_getchrepeat",
   message0: "Get repeat channel",
-  colour: 100,
+  colour: "#9C5100",
   tooltip: "Get the channel used by the Rednet API to repeat messages.",
   helpUrl: "",
   output: "Number",
@@ -1847,7 +1905,7 @@ const rn_chmaxid = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Set the number of channels rednet reserves for computer IDs.",
   helpUrl: "",
 };
@@ -1855,7 +1913,7 @@ const rn_chmaxid = {
 const rn_getchmaxid = {
   type: "rn_getchmaxid",
   message0: "Get max id",
-  colour: 100,
+  colour: "#9C5100",
   tooltip: "Get the number of channels rednet reserves for computer IDs.",
   helpUrl: "",
   output: "Number",
@@ -1873,7 +1931,7 @@ const rn_open = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Open a rednet modem",
   helpUrl: "",
 };
@@ -1890,7 +1948,7 @@ const rn_close = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Close a rednet modem",
   helpUrl: "",
 };
@@ -1905,7 +1963,7 @@ const rn_isopen = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#9C5100",
   tooltip: "Check whether a rednet modem is open",
   helpUrl: "",
   output: "Boolean",
@@ -1938,7 +1996,7 @@ const rn_send = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Send a message to a computer with a specific id",
   helpUrl: "",
 };
@@ -1965,7 +2023,7 @@ const rn_broadcast = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Broadcast a message to all computers on the same channel",
   helpUrl: "",
 };
@@ -1973,7 +2031,7 @@ const rn_broadcast = {
 const rn_receive = {
   type: "rn_receive",
   message0: "Receive",
-  colour: 100,
+  colour: "#9C5100",
   tooltip: "Receive a message from the rednet",
   helpUrl: "",
   output: "Array",
@@ -1995,7 +2053,7 @@ const rn_receivewith = {
     },
   ],
   inputsInline: true,
-  colour: 100,
+  colour: "#9C5100",
   tooltip: "Receive a message from the rednet with a timeout and a filter",
   helpUrl: "",
   output: "Array",
@@ -2019,7 +2077,7 @@ const rn_host = {
   inputsInline: true,
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Register the computer as a host for a specific protocol",
   helpUrl: "",
 };
@@ -2036,7 +2094,7 @@ const rn_unhost = {
   ],
   previousStatement: null,
   nextStatement: null,
-  colour: 100,
+  colour: "#C15100",
   tooltip: "Unregister the computer as a host for a specific protocol",
   helpUrl: "",
 };
@@ -2056,7 +2114,7 @@ const rn_lookup = {
       check: "String",
     },
   ],
-  colour: 100,
+  colour: "#9C5100",
   tooltip: "Get the ID of a computer hosting a specific protocol",
   helpUrl: "",
   output: "Number",
@@ -2072,6 +2130,10 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   table_field,
   table_get,
   table_set,
+  table_remove,
+  table_keys,
+  table_values,
+  table_length,
 
 
   sleep,
@@ -2091,7 +2153,6 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   fs_readline,
   fs_seek,
   fs_seek_pos,
-  list_getkey,
   fs_copy,
   fs_delete,
   fs_exists,
