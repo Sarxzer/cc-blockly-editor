@@ -8,44 +8,28 @@ import * as Blockly from "blockly/core";
 
 const table = {
   type: "table",
-  message0: "Table %1",
+  message0: "Create table with keys %1 and values %2",
   args0: [
     {
-      type: "input_statement",
-      name: "FIELDS",
-      check: "table_field",
+      type: "input_value",
+      name: "KEYS",
+      check: "Array",
+    },
+    {
+      type: "input_value",
+      name: "VALUES",
+      check: "Array",
     },
   ],
   colour: "#943794",
-  tooltip: "Create a table",
+  tooltip: "Create a table with keys and values",
   helpUrl: "",
   output: "table",
 };
 
-const table_field = {
-  type: "table_field",
-  message0: "Add field key %1 to value %2",
-  args0: [
-    {
-      type: "input_value",
-      name: "KEY",
-      check: "String",
-    },
-    {
-      type: "input_value",
-      name: "VALUE",
-    },
-  ],
-  previousStatement: ["table_field", "table"],
-  nextStatement: ["table_field", "table"],
-  colour: "#943794",
-  tooltip: "Add a field to a table",
-  helpUrl: "",
-};
-
 const table_get = {
   type: "table_get",
-  message0: "Get key %1 from table %2",
+  message0: "Get value of key %1 from table %2",
   args0: [
     {
       type: "input_value",
@@ -66,7 +50,7 @@ const table_get = {
 
 const table_set = {
   type: "table_set",
-  message0: "Set key %1 in table %2 to %3",
+  message0: "Set value of key %1 in table %2 to %3",
   args0: [
     {
       type: "input_value",
@@ -114,7 +98,7 @@ const table_remove = {
 
 const table_keys = {
   type: "table_keys",
-  message0: "Keys of table %1",
+  message0: "Get keys from table %1",
   args0: [
     {
       type: "input_value",
@@ -130,7 +114,7 @@ const table_keys = {
 
 const table_values = {
   type: "table_values",
-  message0: "Values of table %1",
+  message0: "Get value from table %1",
   args0: [
     {
       type: "input_value",
@@ -146,7 +130,7 @@ const table_values = {
 
 const table_length = {
   type: "table_length",
-  message0: "Length of table %1",
+  message0: "Get size of table %1",
   args0: [
     {
       type: "input_value",
@@ -962,7 +946,7 @@ const turtle_refuel = {
 };
 const turtle_compareto = {
   type: "turtle_compareto",
-  message0: "Compare to item in slot %1",
+  message0: "Compare selected slot to slot # %1",
   args0: [
     {
       type: "input_value",
@@ -993,7 +977,7 @@ const turtle_transferto = {
 };
 const turtle_equip = {
   type: "turtle_equip",
-  message0: "Equip to the %1",
+  message0: "Equip selected slot to %1",
   args0: [
     {
       type: "field_dropdown",
@@ -1012,8 +996,16 @@ const turtle_equip = {
 };
 const turtle_getitemdetail = {
   type: "turtle_getitemdetail",
-  message0: "Item detail in slot %1",
+  message0: "Get %1 details of item in slot # %2",
   args0: [
+    {
+      type: "field_dropdown",
+      name: "QUANTITY",
+      options: [
+        ["some", "false"],
+        ["all", "true"],
+      ],
+    },
     {
       type: "input_value",
       name: "SLOT",
@@ -1026,25 +1018,10 @@ const turtle_getitemdetail = {
   helpUrl: "",
   output: "Array",
 };
-const turtle_getitemdetail_detailed = {
-  type: "turtle_getitemdetail_detailed",
-  message0: "Item detail in slot %1 (with more details)",
-  args0: [
-    {
-      type: "input_value",
-      name: "SLOT",
-      check: "Number",
-    },
-  ],
-  colour: 230,
-  tooltip:
-    "Gives more data at the cost of run time. If slot is 0, defaults to current slot.",
-  helpUrl: "",
-  output: "Array",
-};
+
 const turtle_getselectedslot = {
   type: "turtle_getselectedslot",
-  message0: "Selected slot",
+  message0: "Get selected slot",
   colour: 230,
   tooltip: "Get selected slot number",
   helpUrl: "",
@@ -1052,7 +1029,7 @@ const turtle_getselectedslot = {
 };
 const turtle_select = {
   type: "turtle_select",
-  message0: "Select slot %1",
+  message0: "Select slot #%1",
   args0: [
     {
       type: "input_value",
@@ -1063,7 +1040,7 @@ const turtle_select = {
   previousStatement: null,
   nextStatement: null,
   colour: 100,
-  tooltip: "Select slot from 1 to 16",
+  tooltip: "Get the selected slot from 1 to 16",
   helpUrl: "",
 };
 const get_arg = {
@@ -2128,7 +2105,6 @@ const rn_lookup = {
 // This file has no side effects!
 export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   table,
-  table_field,
   table_get,
   table_set,
   table_remove,
@@ -2185,7 +2161,6 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   turtle_getfuellevel,
   turtle_getfuellimit,
   turtle_getitemdetail,
-  turtle_getitemdetail_detailed,
   turtle_getselectedslot,
   turtle_inspect,
   turtle_move,

@@ -12,21 +12,11 @@ import { Order } from "blockly/lua";
 export const forBlock = Object.create(null);
 
 forBlock["table"] = function (block, generator) {
-  let fields = generator.statementToCode(block, "FIELDS", Order.NONE);
-  // Remove the indentation
-  fields = fields.replace(/^  /gm, '');
-  // Remove the last comma and newline
-  fields = fields.substring(0, fields.length - 1);
-  const code = `{${fields}}`;
+  const keys = (generator.valueToCode(block, "KEYS", Order.NONE) || "[]").slice(1, -1).split(", ");
+  const values = (generator.valueToCode(block, "VALUES", Order.NONE) || "[]").slice(1, -1).split(", ");
+  // Generate the function call for this block.
+  const code = `{${keys.map((k, i) => `[${k}]=${values[i] || "nil"}`).join(", ")}}`;
   return [code, Order.NONE];
-};
-
-forBlock["table_field"] = function (block, generator) {
-  const key = generator.valueToCode(block, "KEY", Order.NONE) || "''";
-  const value = generator.valueToCode(block, "VALUE", Order.NONE) || "''";
-  // Add a comma and newline at the end of each field
-  const code = `[${key}]=${value},`;
-  return code;
 };
 
 forBlock["table_get"] = function (block, generator) {
@@ -366,15 +356,9 @@ forBlock["turtle_getfuellimit"] = function (block, generator) {
   return [`turtle.getFuelLimit()`, Order.NONE];
 };
 forBlock["turtle_getitemdetail"] = function (block, generator) {
-  const slot = generator.valueToCode(block, "SLOT", Order.NONE) || "";
-  return [`turtle.getItemDetail(${slot > 0 ? slot : ""})`, Order.NONE];
-};
-forBlock["turtle_getitemdetail_detailed"] = function (block, generator) {
-  const slot = generator.valueToCode(block, "SLOT", Order.NONE) || "";
-  return [
-    `turtle.getItemDetail(${slot > 0 ? slot + "," : ""},true)`,
-    Order.NONE,
-  ];
+  const quantity = block.getFieldValue("QUANTITY");
+  const slot = generator.valueToCode(block, "SLOT", Order.NONE) || "0";
+  return [`turtle.getItemDetail(${slot},${quantity})`, Order.NONE];
 };
 forBlock["turtle_getselectedslot"] = function (block, generator) {
   return [`turtle.getSelectedSlot()`, Order.NONE];

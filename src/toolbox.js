@@ -610,35 +610,6 @@ export const toolbox = {
         {
           kind: "block",
           type: "table",
-          inputs: {
-            FIELDS: {
-              block: {
-                type: "table_field",
-                inputs: {
-                  KEY: {
-                    shadow: {
-                      type: "text",
-                      fields: {
-                        TEXT: "key",
-                      },
-                    },
-                  },
-                  VALUE: {
-                    shadow: {
-                      type: "text",
-                      fields: {
-                        TEXT: "value",
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-        {
-          kind: "block",
-          type: "table_field",
         },
         {
           kind: "block",
@@ -803,7 +774,6 @@ export const toolbox = {
         { kind: "block", type: "turtle_getfuellevel" },
         { kind: "block", type: "turtle_getfuellimit" },
         { kind: "block", type: "turtle_getitemdetail" },
-        { kind: "block", type: "turtle_getitemdetail_detailed" },
         { kind: "block", type: "turtle_getselectedslot" },
         { kind: "block", type: "turtle_inspect" },
         { kind: "block", type: "turtle_refuel" },
