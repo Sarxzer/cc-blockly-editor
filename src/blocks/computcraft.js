@@ -144,6 +144,8 @@ const table_length = {
   output: "Number",
 };
 
+// CC: Base
+
 const sleep = {
   type: "sleep",
   message0: "Wait %1 seconds",
@@ -158,7 +160,7 @@ const sleep = {
   nextStatement: null,
   colour: "#A1A15D",
   tooltip: "Wait for some time",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#wait-time-seconds",
 };
 const print = {
   type: "print",
@@ -174,7 +176,7 @@ const print = {
   nextStatement: null,
   colour: "#A1A15D",
   tooltip: "Write text with newline",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#print-string-number-boolean"
 };
 const printerror = {
   type: "printerror",
@@ -192,6 +194,7 @@ const printerror = {
   tooltip: "Log an error",
   helpUrl: "",
 };
+
 const write = {
   type: "write",
   message0: "Write %1",
@@ -206,16 +209,18 @@ const write = {
   nextStatement: null,
   colour: "#A1A15D",
   tooltip: "Write text without newline",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#write-string-number-boolean"
 };
+
 const read = {
   type: "read",
   message0: "Read",
   colour: "#A1A15D",
   tooltip: "Read from console",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#read",
   output: "String",
 };
+
 const read_completion = {
   type: "read_completion",
   message0: "Read with autocomplete %1",
@@ -230,6 +235,7 @@ const read_completion = {
   helpUrl: "",
   output: "String",
 };
+
 const tonumber = {
   type: "tonumber",
   message0: "To number: %1",
@@ -241,9 +247,10 @@ const tonumber = {
   ],
   colour: "#A1A15D",
   tooltip: "Convert any object to a number",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#to-number-string",
   output: "Number",
 };
+
 const tostring = {
   type: "tostring",
   message0: "To string: %1",
@@ -255,9 +262,10 @@ const tostring = {
   ],
   colour: "#A1A15D",
   tooltip: "Convert any object to string",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#to-string-all",
   output: "String",
 };
+
 const read_replace = {
   type: "read_replace",
   message0: "Read and replace with %1",
@@ -270,7 +278,7 @@ const read_replace = {
   ],
   colour: "#A1A15D",
   tooltip: "Read from console and replace input with a character",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#read-and-replace-with-string",
   output: "String",
 };
 
@@ -1049,7 +1057,7 @@ const get_arg = {
   args0: [{ type: "input_value", check: "Number", name: "NUM" }],
   colour: "#A1A15D",
   tooltip: "Get command line argument",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#get-arg--int",
   output: null,
 };
 const shallow_copy = {
@@ -1066,7 +1074,7 @@ const args = {
   message0: "args",
   colour: "#A1A15D",
   tooltip: "Argument table",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#args",
   output: "Array",
 };
 const get_arg_amount = {
@@ -1074,7 +1082,7 @@ const get_arg_amount = {
   message0: "Amount of arguments",
   colour: "#A1A15D",
   tooltip: "Amount of command line arguments",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#amount-of-arguments",
   output: "Number",
 };
 
@@ -1365,7 +1373,7 @@ const side = {
   ],
   colour: "#A1A15D",
   tooltip: "Side of the computer",
-  helpUrl: "",
+  helpUrl: "https://github.com/Sarxzer/cc-blockly-editor/wiki/CC:-Base#side--front--back--left--right--top--bottom-",
   output: "String",
 };
 
