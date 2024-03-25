@@ -1,4 +1,5 @@
 # ComputerCraft : Blockly Editor
+![GitHub Repo stars](https://img.shields.io/github/stars/Sarxzer/cc-blockly-editor?style=flat)
 
 This application is a visual code editor for ComputerCraft and ComputerCraft:Tweaked, a Minecraft mod that adds in-game Computers. Each computer comes with its own Operating System and a programming language called Lua. This Blockly application allows you to create Lua scripts for ComputerCraft using a visual block-based interface.
 
