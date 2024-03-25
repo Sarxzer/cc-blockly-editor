@@ -88,6 +88,9 @@ const theme = Blockly.Theme.defineTheme('computcraft', {
     'http_category': {
       'colour': '#008B8B',
     },
+    'monitor_category': {
+      'colour': '#D4A017',
+    },
   },
 
   'blockStyles': {
