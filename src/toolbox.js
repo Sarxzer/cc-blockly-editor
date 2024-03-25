@@ -1194,9 +1194,23 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "per_gettypes",
+          type: "per_wrap",
           inputs: {
             NAME: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "modem",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "per_find",
+          inputs: {
+            TYPE: {
               shadow: {
                 type: "text",
                 fields: {
@@ -1498,6 +1512,158 @@ export const toolbox = {
               },
             },
           },
+        },
+      ],
+    },
+    {
+      kind: "sep",
+    },
+    {
+      kind: "category",
+      name: "CC: Monitor",
+      categorystyle: "monitor_category",
+      contents: [
+        {
+          kind: "block",
+          type: "mon_settextscale",
+          inputs: {
+            SCALE: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 1,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "mon_gettextscale",
+        },
+        {
+          kind: "block",
+          type: "mon_setcursorpos",
+          inputs: {
+            X: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 1,
+                },
+              },
+            },
+            Y: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 1,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "mon_getcursorpos",
+        },
+        {
+          kind: "block",
+          type: "mon_getsize",
+        },
+        {
+          kind: "block",
+          type: "mon_clear",
+        },
+        {
+          kind: "block",
+          type: "mon_clearline",
+        },
+        {
+          kind: "block",
+          type: "mon_write",
+          inputs: {
+            TEXT: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "abc",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "mon_scroll",
+          inputs: {
+            Y: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 1,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "mon_settextcolor",
+          inputs: {
+            COLOR: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 1,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "mon_setbgcolor",
+          inputs: {
+            COLOR: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 1,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "mon_gettextcolor",
+        },
+        {
+          kind: "block",
+          type: "mon_getbgcolor",
+        },
+        {
+          kind: "block",
+          type: "mon_blit",
+          inputs: {
+            TEXT: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "abc",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "mon_getpalettecolor",
+        },
+        {
+          kind: "block",
+          type: "mon_setpalettecolor",
         },
       ],
     },

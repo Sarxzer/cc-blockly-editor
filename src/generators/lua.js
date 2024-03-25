@@ -575,14 +575,14 @@ forBlock["per_getnames"] = function (block, generator) {
 forBlock["per_ispresent"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.isPresent("${name}")`;
+  const code = `peripheral.isPresent(${name})`;
   return [code, Order.NONE];
 }
 
 forBlock["per_gettypes"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.getType("${name}")`;
+  const code = `peripheral.getType(${name})`;
   return [code, Order.NONE];
 }
 
@@ -590,14 +590,14 @@ forBlock["per_hastype"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   const type = generator.valueToCode(block, "TYPE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.hasType("${name}","${type}")`;
+  const code = `peripheral.hasType(${name},${type})`;
   return [code, Order.NONE];
 }
 
 forBlock["per_getmethods"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.getMethods("${name}")`;
+  const code = `peripheral.getMethods(${name})`;
   return [code, Order.NONE];
 }
 
@@ -606,21 +606,21 @@ forBlock["per_call"] = function (block, generator) {
   const method = generator.valueToCode(block, "METHOD", Order.NONE) || "''";
   const args = generator.valueToCode(block, "ARGS", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.call("${name}","${method}","${args}")`;
+  const code = `peripheral.call(${name},${method},${args})`;
   return [code, Order.NONE];
 }
 
 forBlock["per_wrap"] = function (block, generator) {
   const name = generator.valueToCode(block, "NAME", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.wrap("${name}")`;
+  const code = `peripheral.wrap(${name})`;
   return [code, Order.NONE];
 }
 
 forBlock["per_find"] = function (block, generator) {
   const type = generator.valueToCode(block, "TYPE", Order.NONE) || "''";
   // Generate the function call for this block.
-  const code = `peripheral.find("${type}")`;
+  const code = `peripheral.find(${type})`;
   return [code, Order.NONE];
 }
 
@@ -799,4 +799,156 @@ forBlock["rn_lookup"] = function (block, generator) {
   if (hostname != "") hostname = `,${hostname}`;
   const code = `rednet.lookup(${protocol}${hostname})`;
   return [code, Order.NONE];
+}
+
+// Monitor
+
+forBlock["mon_settextscale"] = function (block, generator) {
+  const scale = generator.valueToCode(block, "SCALE", Order.NONE) || "1";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.setTextScale(${scale})\n`;
+  return code;
+}
+
+forBlock["mon_gettextscale"] = function (block, generator) {
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.getTextScale()`;
+  return [code, Order.NONE];
+}
+
+forBlock["mon_scroll"] = function (block, generator) {
+  const lines = generator.valueToCode(block, "LINES", Order.NONE) || "1";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.scroll(${lines})\n`;
+  return code;
+}
+
+forBlock["mon_setcursorpos"] = function (block, generator) {
+  const x = generator.valueToCode(block, "X", Order.NONE) || "0";
+  const y = generator.valueToCode(block, "Y", Order.NONE) || "0";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.setCursorPos(${x},${y})\n`;
+  return code;
+}
+
+forBlock["mon_getcursorpos"] = function (block, generator) {
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.getCursorPos()`;
+  return [code, Order.NONE];
+}
+
+forBlock["mon_getcursorblink"] = function (block, generator) {
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.getCursorBlink()`;
+  return [code, Order.NONE];
+}
+
+forBlock["mon_setcursorblink"] = function (block, generator) {
+  const blink = block.getFieldValue("BLINK");
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.setCursorBlink(${blink})\n`;
+  return code;
+}
+
+forBlock["mon_getsize"] = function (block, generator) {
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.getSize()`;
+  return [code, Order.NONE];
+}
+
+forBlock["mon_clear"] = function (block, generator) {
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.clear()\n`;
+  return code;
+}
+
+forBlock["mon_clearline"] = function (block, generator) {
+  const line = generator.valueToCode(block, "LINE", Order.NONE) || "0";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.setCursorPos(1,${line})\n${monitor}.clearLine()\n`;
+  return code;
+}
+
+forBlock["mon_gettextcolor"] = function (block, generator) {
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.getTextColor()`;
+  return [code, Order.NONE];
+}
+
+forBlock["mon_settextcolor"] = function (block, generator) {
+  const color = generator.valueToCode(block, "COLOR", Order.NONE) || "0";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.setTextColor(${color})\n`;
+  return code;
+}
+
+forBlock["mon_getbgcolor"] = function (block, generator) {
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.getBackgroundColor()`;
+  return [code, Order.NONE];
+}
+
+forBlock["mon_setbgcolor"] = function (block, generator) {
+  const color = generator.valueToCode(block, "COLOR", Order.NONE) || "0";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.setBackgroundColor(${color})\n`;
+  return code;
+}
+
+forBlock["mon_iscolor"] = function (block, generator) {
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.isColor()`;
+  return [code, Order.NONE];
+}
+
+forBlock["mon_blit"] = function (block, generator) {
+  const text = generator.valueToCode(block, "TEXT", Order.NONE) || "''";
+  const fg = generator.valueToCode(block, "TEXTCOLOR", Order.NONE) || "0";
+  const bg = generator.valueToCode(block, "BGCOLOR", Order.NONE) || "0";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.blit(${text},${fg},${bg})\n`;
+  return code;
+}
+
+forBlock["mon_write"] = function (block, generator) {
+  const text = generator.valueToCode(block, "TEXT", Order.NONE) || "''";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.write(${text})\n`;
+  return code;
+}
+
+forBlock["mon_getpalettecolor"] = function (block, generator) {
+  const color = generator.valueToCode(block, "COLOR", Order.NONE) || "0";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${monitor}.getPaletteColor(${color})`;
+  return [code, Order.NONE];
+}
+
+forBlock["mon_setpalettecolor"] = function (block, generator) {
+  const color = generator.valueToCode(block, "COLOR", Order.NONE) || "0";
+  const monitor = generator.valueToCode(block, "MONITOR", Order.NONE) || "''";
+  const red = generator.valueToCode(block, "RED", Order.NONE) || "0";
+  const green = generator.valueToCode(block, "GREEN", Order.NONE) || "0";
+  const blue = generator.valueToCode(block, "BLUE", Order.NONE) || "0";
+  // Generate the function call for this block.
+  const code = `${monitor}.setPaletteColor(${color},${red},${green},${blue})\n`;
+  return code;
 }

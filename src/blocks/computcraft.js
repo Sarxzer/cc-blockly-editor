@@ -1697,7 +1697,7 @@ const per_find = {
   colour: "#BCA400",
   tooltip: "Find a peripheral with a specific type",
   helpUrl: "",
-  output: "String",
+  output: "Table",
 };
 
 //Redstone
@@ -2107,6 +2107,412 @@ const rn_lookup = {
 };
 
 
+// Monitor
+
+const mon_settextscale = {
+  type: "mon_settextscale",
+  message0: "Set text scale to %1 of the monitor %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "SCALE",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Set the text scale of the monitor",
+  helpUrl: "",
+};
+
+const mon_gettextscale = {
+  type: "mon_gettextscale",
+  message0: "Get text scale of the monitor %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  colour: "#B58900",
+  tooltip: "Get the text scale of the monitor",
+  helpUrl: "",
+  output: "Number",
+};
+
+const mon_write = {
+  type: "mon_write",
+  message0: "Write %1 to the monitor %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "TEXT",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Write text to the monitor",
+  helpUrl: "",
+};
+
+const mon_scroll = {
+  type: "mon_scroll",
+  message0: "Scroll monitor %1 by %2 pixels",
+  args0: [
+    {
+      type: "input_value",
+      name: "Y",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Move all positions up (or down) by y pixels",
+  helpUrl: "",
+};
+
+const mon_getcursorpos = {
+  type: "mon_getcursorpos",
+  message0: "Get cursor position of the monitor %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  colour: "#B58900",
+  tooltip: "Get the cursor position of the monitor",
+  helpUrl: "",
+  output: "Array",
+};
+
+const mon_setcursorpos = {
+  type: "mon_setcursorpos",
+  message0: "Set cursor position of the monitor %1 to x %2 y %3",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+    {
+      type: "input_value",
+      name: "X",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "Y",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Set the cursor position of the monitor",
+  helpUrl: "",
+};
+
+const mon_getcursorblink = {
+  type: "mon_getcursorblink",
+  message0: "Check if cursor is blinking on the monitor %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  colour: "#B58900",
+  tooltip: "Check if the cursor is blinking on the monitor",
+  helpUrl: "",
+  output: "Boolean",
+};
+
+const mon_setcursorblink = {
+  type: "mon_setcursorblink",
+  message0: "Set cursor blinking on the monitor %1 to %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+    {
+      type: "dropdown",
+      name: "VALUE",
+      options: [
+        ["true", "true"],
+        ["false", "false"],
+      ],
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Set the cursor blinking on the monitor",
+  helpUrl: "",
+};
+
+const mon_getsize = {
+  type: "mon_getsize",
+  message0: "Get size of the monitor %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  colour: "#B58900",
+  tooltip: "Get the size of the monitor",
+  helpUrl: "",
+  output: "Array",
+};
+
+const mon_clear = {
+  type: "mon_clear",
+  message0: "Clear monitor %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Clear the monitor",
+  helpUrl: "",
+};
+
+const mon_clearline = {
+  type: "mon_clearline",
+  message0: "Clear line %1 of monitor %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "LINE",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Clear a line of the monitor",
+  helpUrl: "",
+};
+
+const mon_gettextcolor = {
+  type: "mon_gettextcolor",
+  message0: "Get text color of the monitor %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  colour: "#B58900",
+  tooltip: "Get the text color of the monitor",
+  helpUrl: "",
+  output: "Number",
+};
+
+const mon_settextcolor = {
+  type: "mon_settextcolor",
+  message0: "Set text color of the monitor %1 to %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+    {
+      type: "input_value",
+      name: "COLOR",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Set the text color of the monitor",
+  helpUrl: "",
+};
+
+const mon_getbgcolor = {
+  type: "mon_getbgcolor",
+  message0: "Get background color of the monitor %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  colour: "#B58900",
+  tooltip: "Get the background color of the monitor",
+  helpUrl: "",
+  output: "Number",
+};
+
+const mon_setbgcolor = {
+  type: "mon_setbgcolor",
+  message0: "Set background color of the monitor %1 to %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+    {
+      type: "input_value",
+      name: "COLOR",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Set the background color of the monitor",
+  helpUrl: "",
+};
+
+const mon_iscolor = {
+  type: "min_iscolor",
+  message0: "Is %1 color?",
+  args0: [
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  colour: "#B58900",
+  tooltip: "Check if the monitor supports colors",
+  helpUrl: "",
+  output: "Boolean",
+};
+
+const mon_blit = {
+  type: "mon_blit",
+  message0: "Write %1 to monitor %2 with text color %3 and background color %4",
+  args0: [
+    {
+      type: "input_value",
+      name: "TEXT",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+    {
+      type: "input_value",
+      name: "TEXTCOLOR",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "BGCOLOR",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Write text to the monitor with colors",
+  helpUrl: "",
+};
+
+const mon_setpalettecolor = {
+  type: "mon_setpalettecolor",
+  message0: "Set palette color %1 from monitor %2 to red %3 green %4 blue %5",
+  args0: [
+    {
+      type: "input_value",
+      name: "INDEX",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+    {
+      type: "input_value",
+      name: "RED",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "GREEN",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "BLUE",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#D4A017",
+  tooltip: "Set the palette color of the monitor",
+  helpUrl: "",
+};
+
+const mon_getpalettecolor = {
+  type: "mon_getpalettecolor",
+  message0: "Get palette color %1 from monitor %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "INDEX",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "MONITOR",
+      check: "Table",
+    },
+  ],
+  colour: "#B58900",
+  tooltip: "Get the palette color of the monitor",
+  helpUrl: "",
+  output: "List",
+};
+
+
 
 // Create the block definitions for the JSON-only blocks.
 // This does not register their definitions with Blockly.
@@ -2240,4 +2646,24 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   rn_host,
   rn_unhost,
   rn_lookup,
+
+  mon_settextscale,
+  mon_gettextscale,
+  mon_write,
+  mon_scroll,
+  mon_getcursorpos,
+  mon_setcursorpos,
+  mon_getcursorblink,
+  mon_setcursorblink,
+  mon_getsize,
+  mon_clear,
+  mon_clearline,
+  mon_gettextcolor,
+  mon_settextcolor,
+  mon_getbgcolor,
+  mon_setbgcolor,
+  mon_iscolor,
+  mon_blit,
+  mon_setpalettecolor,
+  mon_getpalettecolor
 ]);
