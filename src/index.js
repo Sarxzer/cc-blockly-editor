@@ -91,6 +91,9 @@ const theme = Blockly.Theme.defineTheme('computcraft', {
     'monitor_category': {
       'colour': '#D4A017',
     },
+    'printer_category': {
+      'colour': '#9E23FF',
+    },
   },
 
   'blockStyles': {

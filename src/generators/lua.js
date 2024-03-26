@@ -952,3 +952,73 @@ forBlock["mon_setpalettecolor"] = function (block, generator) {
   const code = `${monitor}.setPaletteColor(${color},${red},${green},${blue})\n`;
   return code;
 }
+
+
+// Printer
+
+forBlock["pr_write"] = function (block, generator) {
+  const text = generator.valueToCode(block, "TEXT", Order.NONE) || "''";
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${printer}.write(${text})\n`;
+  return code;
+}
+
+forBlock["pr_getcursorpos"] = function (block, generator) {
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${printer}.getCursorPos()`;
+  return [code, Order.NONE];
+}
+
+forBlock["pr_setcursorpos"] = function (block, generator) {
+  const x = generator.valueToCode(block, "X", Order.NONE) || "0";
+  const y = generator.valueToCode(block, "Y", Order.NONE) || "0";
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${printer}.setCursorPos(${x},${y})\n`;
+  return code;
+}
+
+forBlock["pr_getpagesize"] = function (block, generator) {
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${printer}.getPageSize()`;
+  return [code, Order.NONE];
+}
+
+forBlock["pr_newpage"] = function (block, generator) {
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `if not ${printer}.newPage() then error("Cannot start a new page, do you have paper or ink?") end\n`;
+  return code;
+}
+
+forBlock["pr_endpage"] = function (block, generator) {
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${printer}.endPage()\n`;
+  return code;
+}
+
+forBlock["pr_setpagetitle"] = function (block, generator) {
+  const title = generator.valueToCode(block, "TITLE", Order.NONE) || "''";
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${printer}.setPageTitle(${title})\n`;
+  return code;
+}
+
+forBlock["pr_getinklevel"] = function (block, generator) {
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${printer}.getInkLevel()`;
+  return [code, Order.NONE];
+}
+
+forBlock["pr_getpaperlevel"] = function (block, generator) {
+  const printer = generator.valueToCode(block, "PRINTER", Order.NONE) || "''";
+  // Generate the function call for this block.
+  const code = `${printer}.getPaperLevel()`;
+  return [code, Order.NONE];
+}

@@ -2512,7 +2512,176 @@ const mon_getpalettecolor = {
   output: "List",
 };
 
+// Printer
 
+const pr_write = {
+  type: "pr_write",
+  message0: "Write %1 on printer %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "TEXT",
+      check: "String",
+    },
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#9E23FF",
+  tooltip: "Write text to the loaded page on the printer",
+  helpUrl: "",
+};
+
+const pr_getcursorpos = {
+  type: "pr_getcursorpos",
+  message0: "Get cursor position of printer %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+  ],
+  colour: "#AB23FF",
+  tooltip: "Get the cursor position of the loaded page on the printer",
+  helpUrl: "",
+  output: "Array",
+};
+
+const pr_setcursorpos = {
+  type: "pr_setcursorpos",
+  message0: "Set cursor position of printer %1 to x %2 y %3",
+  args0: [
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+    {
+      type: "input_value",
+      name: "X",
+      check: "Number",
+    },
+    {
+      type: "input_value",
+      name: "Y",
+      check: "Number",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#9E23FF",
+  tooltip: "Set the cursor position of the loaded page on the printer",
+  helpUrl: "",
+};
+
+const pr_getpagesize = {
+  type: "pr_getpagesize",
+  message0: "Get page size of printer %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+  ],
+  colour: "#AB23FF",
+  tooltip: "Get the page size of the printer",
+  helpUrl: "",
+  output: "Array",
+};
+
+const pr_newpage = {
+  type: "pr_newpage",
+  message0: "New page on printer %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#9E23FF",
+  tooltip: "Start a new page on the printer",
+  helpUrl: "",
+};
+
+const pr_endpage = {
+  type: "pr_endpage",
+  message0: "End page on printer %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#9E23FF",
+  tooltip: "End the current page on the printer and print it",
+  helpUrl: "",
+};
+
+const pr_setpagetitle = {
+  type: "pr_setpagetitle",
+  message0: "Set page title of printer %1 to %2",
+  args0: [
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+    {
+      type: "input_value",
+      name: "TITLE",
+      check: "String",
+    },
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: "#9E23FF",
+  tooltip: "Set the title of the current page on the printer",
+  helpUrl: "",
+};
+
+const pr_getinklevel = {
+  type: "pr_getinklevel",
+  message0: "Get ink level of printer %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+  ],
+  colour: "#AB23FF",
+  tooltip: "Get the ink level of the printer",
+  helpUrl: "",
+  output: "Number",
+};
+
+const pr_getpaperlevel = {
+  type: "pr_getpaperlevel",
+  message0: "Get paper level of printer %1",
+  args0: [
+    {
+      type: "input_value",
+      name: "PRINTER",
+      check: "Table",
+    },
+  ],
+  colour: "#AB23FF",
+  tooltip: "Get the paper level of the printer",
+  helpUrl: "",
+  output: "Number",
+};
 
 // Create the block definitions for the JSON-only blocks.
 // This does not register their definitions with Blockly.
@@ -2665,5 +2834,15 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   mon_iscolor,
   mon_blit,
   mon_setpalettecolor,
-  mon_getpalettecolor
+  mon_getpalettecolor,
+
+  pr_write,
+  pr_getcursorpos,
+  pr_setcursorpos,
+  pr_getpagesize,
+  pr_newpage,
+  pr_endpage,
+  pr_setpagetitle,
+  pr_getinklevel,
+  pr_getpaperlevel,
 ]);

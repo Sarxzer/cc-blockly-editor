@@ -1668,6 +1668,87 @@ export const toolbox = {
       ],
     },
     {
+      kind: "category",
+      name: "CC: Printer",
+      categorystyle: "printer_category",
+      contents: [
+        {
+          kind: "block",
+          type: "pr_newpage",
+        },
+        {
+          kind: "block",
+          type: "pr_endpage",
+        },
+        {
+          kind: "block",
+          type: "pr_setpagetitle",
+          inputs: {
+            TITLE: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "title",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "pr_getcursorpos",
+        },
+        {
+          kind: "block",
+          type: "pr_setcursorpos",
+          inputs: {
+            X: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 1,
+                },
+              },
+            },
+            Y: {
+              shadow: {
+                type: "math_number",
+                fields: {
+                  NUM: 1,
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "pr_write",
+          inputs: {
+            TEXT: {
+              shadow: {
+                type: "text",
+                fields: {
+                  TEXT: "abc",
+                },
+              },
+            },
+          },
+        },
+        {
+          kind: "block",
+          type: "pr_getpagesize",
+        },
+        {
+          kind: "block",
+          type: "pr_getinklevel",
+        },
+        {
+          kind: "block",
+          type: "pr_getpaperlevel",
+        }
+      ],
+    },
+    {
       kind: "sep",
     },
     {
